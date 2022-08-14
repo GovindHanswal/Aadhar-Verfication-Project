@@ -9,11 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class JnuStudents extends Authenticatable
+class Students extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'jnu_students';
+    protected $table = 'students';
     
     /**
      * The attributes that are mass assignable.

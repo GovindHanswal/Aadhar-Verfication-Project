@@ -63,20 +63,11 @@ class AadhaarController extends Controller
         }
     }
 
-    public function verifyAadhaarPage($college_id = null) {
+    public function verifyAadhaarPage() {
 
-        if($college_id) {
-
-            // session()->put('registration', true);
-
-            return view('Aadhaar.new-aadhaarValidate', [
-                'aadhaarData' => [],
-                'college_id' => $college_id
-            ]);
-        }
-        else {
-            return redirect()->route('college-list');
-        }
+        return view('Aadhaar.new-aadhaarValidate', [
+            'aadhaarData' => [],
+        ]);
     }
 
     public function verifyMobilePage() {
@@ -109,17 +100,6 @@ class AadhaarController extends Controller
         if($userCheck) {
 
             session()->put('registration', true);
-
-            $collageObject = College::where('college_id', $request['college_id'])->first();
-
-            $collegeData = [
-                'college_id' => $collageObject->college_id,
-                'college_name' => $collageObject->college_name,
-            ];
-
-            // set college data session
-            session()->forget('collegeData');
-            session()->put('collegeData', $collegeData);
 
             $data = Aadhaar::where('aadhaar_no', $request['aadhaar_no'])->first();
     

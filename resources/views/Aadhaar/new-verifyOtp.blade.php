@@ -60,7 +60,7 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>{{Session::get('collegeData')['college_name']}}</h3>
+                <h3></h3>
                 <div class="action_sign_up_btn">
                     <!-- <div class="sign_up_btn">
                         <a href="{{route('verify-page')}}" role="">Sign Up

@@ -45,8 +45,6 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="college_id" value="{{$college_id}}">
-
                         <div class="action_btn">
                             <div class="sign_in_btn">
                                 <button class="submit-btn" type="submit">Sign in</button>
@@ -62,7 +60,7 @@
                 <!-- <p>Verify yourself</p> -->
                 <div class="action_sign_up_btn">
                     <div class="sign_up_btn">
-                        <a href="{{route('login', [$college_id])}}" role="">Sign in
+                        <a href="{{route('login')}}" role="">Sign in
                         </a>
                     </div>
                 </div>

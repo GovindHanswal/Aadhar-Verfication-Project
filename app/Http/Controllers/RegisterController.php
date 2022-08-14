@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Storage;
 use App\Models\User;
-use App\Models\JnuStudents;
+use App\Models\Students;
 use App\Models\JecrcStudents;
 use App\Models\RegisteredAadhaar;
 
@@ -15,16 +15,7 @@ class RegisterController extends Controller
 {
     //
     public function registerCreatePage() {
-
-        $collegeData = session()->get('collegeData');
-
-        if($collegeData) {
-            return view('Register.new-register');
-        }
-        else {
-            return redirect()->route('verify-page');
-        }
-        
+        return view('Register.new-register');
     }
 
     public function credentialPage() {
@@ -69,8 +60,7 @@ class RegisterController extends Controller
             '10_marksheet' => $marksheet_10_path,
             '12_marksheet' => $marksheet_12_path,
             'profile_image' => $profile_path,
-            'college_id' => $request['college_id'],
-            'college_name' => $request['college_name'],
+            'college_id' => "C-140623",
             'is_active' => true
         ];
 
@@ -82,19 +72,13 @@ class RegisterController extends Controller
         $data['username'] = $username;
         $data['password'] = $password;
 
-        if($request['college_id'] ==  "C-140623") {
-            $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
-        }
-
-        if($request['college_id'] == "C-953951") {
-            $store = JecrcStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
-        }
+        $store = Students::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
 
         if($store) {
 
             $registedData = [
                 'aadhaar_no' => $request['aadhaar_no'],
-                'college_id' => $request['college_id']
+                'college_id' => $data['college_id']
             ];
 
             RegisteredAadhaar::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $registedData);

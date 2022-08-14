@@ -143,8 +143,8 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="college_name" value="{{Session::get('collegeData')['college_name']}}">
-                        <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}">
+                        {{-- <input type="hidden" name="college_name" value="{{Session::get('collegeData')['college_name']}}">
+                        <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}"> --}}
                         <input type="hidden" name="aadhaar_no" value="{{Session::get('userData')['aadhaar_no'] ? Session::get('userData')['aadhaar_no'] : ''}}">
 
                         <div class="action_btn">
@@ -158,7 +158,7 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>{{Session::get('collegeData')['college_name']}}</h3>
+                <h3>{{-- Session::get('collegeData')['college_name'] --}}</h3>
             </div>
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>
