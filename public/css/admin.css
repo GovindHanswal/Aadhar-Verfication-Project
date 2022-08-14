@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.main-wrapper {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.right-container {
+    display: flex;
+    min-width: 30vw;
+    min-height: 100vh;
+    align-items: end;
+    height: auto !important;
+    justify-content: center;
+    /* background: #e9e0cf; */
+    background-image: linear-gradient(to left,#e9e0cf , #13699b);
+}
+
+.signinform {
+    text-align: center;
+}
+
+.form-container {
+    max-width: 25vw;
+    padding: 20px;
+    /* box-shadow: 0 0 30px 10px rgba(59, 91, 114, 0.14); */
+}
+
+.right-container {
+    padding-bottom: 5rem!important;
+    padding-top: 5rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    text-align: center;
+}
+
+.right-container img {
+    width: 500px;
+    
+}
+
+.content{
+    color: #453e79;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.6s;
+
+}
+
+.right-container .panel h3{
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1.5rem;
+}
+.right-container .panel p{
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+}
+
+/* Sign up button on panel */
+.action_sign_up_btn{
+    display: flex;
+    justify-content: center;
+    position: relative; 
+    width: 100%;
+}
+
+.sign_up_btn{
+    display: flex;
+    width: 135px;
+    height: 50px;
+    position: absolute; 
+    border: 2px solid #453e79;
+    
+} 
+
+.sign_up_btn a{
+    display: flex;
+    text-decoration: none;
+    color: #453e79;
+    
+    width: 135px;
+    
+    align-items: center; 
+    cursor: pointer;
+/* 
+    position: relative
+    ; */
+    justify-content: center;
+    padding: 0;
+    
+    /* border-radius: 6px; */
+}
+
+.sign_up_btn a:hover {
+    color: #fff;
+    background-color:#453e79;
+    border: none;
+    transition: ease all 0.4s;
+}
+
+.submit-btn {
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+    background-color:
+    #453e79 ;
+    width: 135px;
+    height: 41px;
+    align-items: center; 
+    cursor: pointer;
+    border: none;
+    position: relative;
+    justify-content: center;
+    padding: 0;
+    border-radius: 6px;
+
+}
+
+.register-form-container {
+    max-width: 40vw;
+}
+
+.input-label {
+    font-size: 12px;
+    float: left;
+    margin: 10px 0;
+}
+
+#formFile {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 35px;
+}
+
+.negative-margin {
+    margin-right: -60px !important;
+    margin-left: -60px !important;
+}
+
+.select-input {
+    border: none !important;
+    border-bottom: 2px solid #e6e6e6 !important;
+    color: #666;
+}
+
+select { color: #666; }
+
+.form-check-input { background-color: whitesmoke !important;}
+
+
+
+.form-check-input:checked { background-color: #453e79 !important;}
+
+/* ----------------------------------------------------- */
+.sign-in-form .title{
+    display: inline-block;
+    font-size: 22px;
+    color: #453e79;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    border: 1px solid #dad8e4;
+    padding: 5px 15px;
+}
+.sign-in-form .input-field{
+    
+    width: 100%;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 100%;
+    /* position: relative; */
+    margin: 10px 0;
+    
+    
+}
+.sign-in-form input{
+    border: none;
+    border-bottom: 2px solid #e6e6e6;
+    background: none;
+    outline: none;
+    line-height: 50px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #666;
+
+}
+.sign-in-form input:focus{
+    /* border-bottom: 2px solid #e9e0cf; */
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.input-field input::placeholder{
+    color: #333;
+    font-weight: 300;
+}
+
+.sign-in-form .btn{
+    width: 150px;
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    font-weight: 600;
+    border: 2px solid white;
+    text-transform: uppercase;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.signinform .usernamew-100{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.page_title{
+    color: #6d7f52;
+    text-align: center;
+    justify-content: flex-start;
+    font-size: 20px;
+    margin-bottom: 26px;
+    font-weight: 500;
+}
+
+.action_btn{
+    display: flex;
+    
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+    width: 100%;
+}
+.action_btn .sign_in_btn .submit-btn:hover{
+    background-color: #e9e0cf;
+    color: #333;
+    transition: ease all 0.4s;
+}
+
+.action_btn .sign_in_btn{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+}
