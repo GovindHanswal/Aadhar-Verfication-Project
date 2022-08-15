@@ -14,22 +14,24 @@
     <div class="main-wrapper">
         <div class="left-container">
             <div class="form-container">
+                 <!-- Alert message -->
+                 @if(session('message'))
+                <div class="alert alert-success text-center">{{session('message')}}</div>
+                @elseif(session('error'))
+                <div class="alert alert-danger text-center">{{session('error')}}</div>
+                @endif
+    
+                @if($errors->any())
+                <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
+                @endif
+                
                 <div class="signinform">
                     <form action="{{route('login.authenticate')}}" method="POST" class="sign-in-form">
                         @csrf
                         <h2 class="title">Sign In</h2>
                         <h2 class="page_title">Please fill with details</h2>
 
-                           <!-- Alert message -->
-                            @if(session('message'))
-                            <div class="alert alert-success text-center">{{session('message')}}</div>
-                            @elseif(session('error'))
-                            <div class="alert alert-danger text-center">{{session('error')}}</div>
-                            @endif
-                
-                            @if($errors->any())
-                            <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
-                            @endif
+                          
 
                         <div class="usernamew-100">
                             <div class="input-field">

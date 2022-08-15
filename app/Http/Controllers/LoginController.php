@@ -65,6 +65,6 @@ class LoginController extends Controller
     public function logout() {
 
         session()->forget('data');
-        return redirect()->route('admin.loginView');
+        return redirect()->route('login');
     }
 }

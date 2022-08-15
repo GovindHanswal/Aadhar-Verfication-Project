@@ -80,7 +80,7 @@
                 <span class="tooltip">Setting</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('logout')}}">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Logout</span>
                 </a>

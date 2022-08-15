@@ -10,7 +10,16 @@ class DashboardController extends Controller
 {
     //
     public function jnuDashboard() {
-        return view('Dashboard.dashboard');
+
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                return view('Dashboard.dashboard');
+            }
+        }
+        return redirect()->route('login');
     }
 
     public function jecrcDashboard() {

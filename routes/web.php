@@ -42,6 +42,7 @@ Route::group([ 'prefix' => 'admin' ], function ($router) {
 
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login/authenticate', [LoginController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::post('/verify-aadhaar-details', [AadhaarController::class, 'verifyAadhaarDetails'])->name('verify-aadhaar');
