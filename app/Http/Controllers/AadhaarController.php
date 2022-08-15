@@ -9,6 +9,8 @@ use App\Models\College;
 use App\Models\VerificationOtp;
 use App\Http\Controllers\OtpController;
 use App\Models\RegisteredAadhaar;
+use App\Models\JecrcStudents;
+use App\Models\Students;
 
 use Illuminate\Http\Request;
 
@@ -91,7 +93,7 @@ class AadhaarController extends Controller
             'aadhaar_no' => 'required'
         ]);
 
-        $user = RegisteredAadhaar::where('aadhaar_no', $request['aadhaar_no'])->first();
+        $user = Students::where('aadhaar_no', $request['aadhaar_no'])->first();
 
         if($user == null) {
             $userCheck = true;
@@ -183,7 +185,7 @@ class AadhaarController extends Controller
             'aadhaar_no' => 'required'
         ]);
 
-        $user = RegisteredAadhaar::where('aadhaar_no', $request['aadhaar_no'])->first();
+        $user = jecrcStudents::where('aadhaar_no', $request['aadhaar_no'])->first();
 
         if($user == null) {
             $userCheck = true;

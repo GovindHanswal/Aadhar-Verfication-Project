@@ -8,6 +8,7 @@ use App\Http\Controllers\OtpController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredAadhaarController;
 
 
@@ -53,11 +54,14 @@ Route::get('/', [CollegeController::class, 'getCollegeList'])->name('college-lis
 Route::get('admin/registration-page', [RegisteredAadhaarController::class, 'createPage']);
 Route::post('admin/registration-create', [RegisteredAadhaarController::class, 'store'])->name('admin.registration');
 
-Route::group([ 'prefix' => 'Jnu' ], function ($router) {
+
+
+Route::group([ 'prefix' => 'jnu' ], function ($router) {
 
     Route::get('/verify-aadhaar', [AadhaarController::class, 'verifyAadhaarPage'])->name('verify-page');
     Route::get('/verify-mobile', [AadhaarController::class, 'verifyMobilePage'])->name('verify-mobile');
     Route::get('/registration', [RegisterController::class, 'registerCreatePage'])->name('register-createPage');
+    Route::get('/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
    
 });
 
@@ -70,6 +74,7 @@ Route::group([ 'prefix' => 'jecrc' , 'namespace' => 'Jecrc' ], function ($router
     Route::get('verify-aadhaar', [AadhaarController::class, 'jecrcAadhaarVerificationPage'])->name('jecrc.aadhaarVerificationPage');
     Route::post('/verify-aadhaar-details', [AadhaarController::class, 'jecrcVerifyAadhaarDetails'])->name('jecrc.verify-details');
     Route::post('/verify-otp', [AadhaarController::class, 'jecrcVerifyOtp'])->name('jecrc.verify-otp');
+    Route::get('/dashboard', [DashboardController::class, 'jecrcDashboard'])->name('jecrc-dashboard');
     
    
 });
