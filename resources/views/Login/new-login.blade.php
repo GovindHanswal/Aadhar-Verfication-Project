@@ -33,7 +33,7 @@
 
                         <div class="usernamew-100">
                             <div class="input-field">
-                                <input type="text" name="username" id="user_name" placeholder="Username" autocomplete='false'>
+                                <input type="text" name="email" id="user_name" placeholder="enter email">
                             </div>
                         </div>
                         <div class="usernamew-100">
@@ -54,14 +54,14 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>New here?</h3>
-                <p>Register now</p>
-                <div class="action_sign_up_btn">
+                <h3>Admin Login</h3>
+                <!-- <p>Register now</p> -->
+                <!-- <div class="action_sign_up_btn">
                     <div class="sign_up_btn">
                         <a href="{{route('verify-page')}}" role="">Sign Up
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>

@@ -15,18 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('username')->unique();
-            $table->string('aadhaar_no')->unique();
+            $table->string('name');
+            $table->string('role');
             $table->string('email')->unique();
-            $table->string('mobile_no');
             $table->string('password');
-            $table->string('age');
-            $table->string('father_name');
-            $table->string('course');
-            $table->string('gender');
-            $table->string('10_marksheet');
-            $table->string('12_marksheet');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredAadhaarController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -34,6 +35,8 @@ Route::group([ 'prefix' => 'admin' ], function ($router) {
     Route::get('registration-page', [RegisteredAadhaarController::class, 'createPage']);
     Route::post('aadhaar-store', [AadhaarController::class, 'aadhaarStore'])->name('aadhaar-store');
     Route::post('registration-create', [RegisteredAadhaarController::class, 'store'])->name('admin.registration');
+
+    Route::get('user/create', [AdminController::class, 'adminCreate'])->name('admin.create');
 });
 
 

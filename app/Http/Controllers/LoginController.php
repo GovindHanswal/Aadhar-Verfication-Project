@@ -34,61 +34,37 @@ class LoginController extends Controller
     public function authenticate(Request $request) {
 
         $this->validate($request, [
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required|string'
         ]);
 
-        $user = User::where('username', $request['username'])->first();
+        $credentials = $request->only('email', 'password');
 
-        $check = Hash::check($request['password'], $user->password);
 
-        dd([$request['password'], $user->password]);
-        // $credentials = $request->only(['username', 'password']);
-
-        // $token = auth()->attempt($credentials);
-
-        // // dd([$credentials, $token]);
-
-        // if(! $token = auth()->attempt($credentials)) {
-        //     return redirect()->back()->with(['error' => 'User credentials are incorrect', 'success' => false]);
-        // }
-
-        $user = auth()->user();
-
-        // if($user['is_active']) {
-        //     $data = [
-        //         'token' => $token,
-        //         'user' => $user
-        //     ];
-        //     return $this->formattedResponse($data, '', 200, true);
-        // }
-        // else {
-        //     $code = 401;
-        //     $msg = "not authorized";
-        //     return $this->formattedResponse([], $msg, $code, false);
-        // }
-
-        if($user && $user['token']) {
-            $session = [
-                'token' => $user['token'],
-                'user_id' => $user['user']['_id'],
-                'role_id' => $user['user']['role_id'],
-                'name' => $user['user']['name'],
-                'email' => $user['user']['email']
-            ];
-
-            session()->put('data', $session);
-
-            return redirect()->route('admin.dashboard');
+        if(! $token = auth()->attempt($credentials)) {
+            
+            return redirect()->back()->with('error', 'Credentials did not match');
         }
         else {
-            return redirect()->back()->with('error', 'Credentials did not match');
+            $user = auth()->user();
+
+            $session = [
+                'token' => $token,
+                'user_id' => $user['id'],
+                'name' => $user['name'],
+                'role_id' => $user['role'],
+                'name' => $user['email'],
+            ];
+    
+            session()->put('data', $session);
+    
+            return redirect()->route('jnu-dashboard');
         }
     }
 
-    // public function logout() {
+    public function logout() {
 
-    //     session()->forget('data');
-    //     return redirect()->route('admin.loginView');
-    // }
+        session()->forget('data');
+        return redirect()->route('admin.loginView');
+    }
 }
