@@ -14,15 +14,10 @@
 
     <div class="main-wrapper">
         <div class="left-container">
-            <div class="form-container">
-             
-                @foreach($collegeList as $list)
-                <ul>
-                    <li><a href="{{route('login', [$list['college_id']])}}">{{$list['college_name']}}</a></li>
-                </ul>
-                @endforeach
-
-            </div>
+            <ul>
+                <li><a href="{{route('verify-page')}}">Register into Jaipur national University</a></li>
+                <li><a href="{{route('jecrc.aadhaarVerificationPage')}}">Register into Jecrc University</a></li>
+            </ul>
         </div>
         <div class="right-container">
             <div class="content">

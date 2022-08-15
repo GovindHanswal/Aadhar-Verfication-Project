@@ -120,6 +120,6 @@
             <button type="submit" class="btn btn-primary submit-btn">Submit</button>
         </form>
     </div>
-    <a href="{{route('verify-page')}}" class="btn btn-success mt-4">Aadhaar verification</a>
+    <a href="{{route('college-list')}}" class="btn btn-success mt-4">Home page</a>
 </body>
 </html>

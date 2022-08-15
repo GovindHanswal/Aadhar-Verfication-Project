@@ -169,4 +169,83 @@ class AadhaarController extends Controller
             return false;
         }
     }
+
+
+    public function jecrcAadhaarVerificationPage() {
+        return view('Jecrc.aadhaarVerification');
+    }
+
+    public function jecrcVerifyAadhaarDetails(Request $request) {
+
+        $userCheck = false;
+        
+        $this->validate($request, [
+            'aadhaar_no' => 'required'
+        ]);
+
+        $user = RegisteredAadhaar::where('aadhaar_no', $request['aadhaar_no'])->first();
+
+        if($user == null) {
+            $userCheck = true;
+        }
+
+        if($userCheck) {
+
+            session()->put('registration', true);
+
+            $data = Aadhaar::where('aadhaar_no', $request['aadhaar_no'])->first();
+    
+            if($data) {
+                $mobile_no = $data->mobile_no;
+    
+                // genrate otp function call
+                $genrateOtp = $this->otpController->genrateOtp($mobile_no);
+    
+                if($genrateOtp) {
+    
+                    $userData = [
+                        'mobile_no' => $mobile_no,
+                        'aadhaar_no' => $data->aadhaar_no,
+                        'name' => $data->name,
+                    ];
+                    session()->forget('userData');
+                    session()->put('userData', $userData);
+    
+                    return view('Jecrc.otpVerification');
+                }
+                else {
+                    return redirect()->back()->with(['error' => 'Authentication failed', 'success' => false]);
+                }
+            }
+            else {
+                return redirect()->back()->with(['error' => 'Invalid aadhaar details', 'success' => false]);
+            }
+        }
+        else {
+            return redirect()->back()->with(['error' => 'User already registered', 'success' => false]);
+        }
+    }
+
+    public function jecrcVerifyOtp(Request $request) {
+
+        $otpMatch = false;
+
+        $this->validate($request, [
+            'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|digits:10',
+            'otp' => 'required|integer|numeric|digits:6'
+        ]);
+
+        $getData = VerificationOtp::where('mobile_no', $request->mobile_no)->first();
+
+        if($getData->otp == $request->otp) {
+            $otpMatch = true;
+        }
+        
+        if($otpMatch) {
+            return redirect()->route('jecrc.registration-page')->with(['message' => 'Successfully verified', 'success' => true]);
+        }
+        else {
+            return redirect()->back()->with(['error' => 'Authentication failed', 'success' => false]);
+        }
+    }
 }

@@ -262,3 +262,10 @@ select { color: #666; }
     align-items: center;
     line-height: 50px;
 }
+
+/* //------------------------------------------- */
+
+.jecrc-page .right-container {
+
+    background-image: linear-gradient(to left,#e9e0cf , #d31818a4) !important;
+}

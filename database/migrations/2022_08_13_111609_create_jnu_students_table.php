@@ -16,12 +16,12 @@ class CreateJnuStudentsTable extends Migration
         Schema::create('jnu_students', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->string('username')->unique();
+            // $table->string('username')->unique();
             $table->string('aadhaar_no')->unique();
             $table->integer('role');
             $table->string('email')->unique();
             $table->string('mobile_no');
-            $table->string('password');
+            // $table->string('password');
             $table->string('dob');
             $table->string('college_id');
             $table->string('college_name');

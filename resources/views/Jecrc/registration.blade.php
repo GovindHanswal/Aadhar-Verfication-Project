@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register page</title>
+    <link rel="stylesheet" href="{{asset('css/login.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jecrc.css')}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="main-wrapper jecrc-page">
+        <div class="right-container">
+            <div class="content">
+                <h3>Jecrc University</h3>
+            </div>
+            <img src="{{asset('assets/container-pic-2.png')}}" alt="">
+        </div>
+        <div class="left-container">
+            <div class="form-container register-form-container" data-aos="fade-right" data-aos-duration="1000">
+             
+                <!-- Alert message -->
+                @if(session('message'))
+                <div class="alert alert-success text-center">{{session('message')}}</div>
+                @elseif(session('error'))
+                <div class="alert alert-danger text-center">{{session('error')}}</div>
+                @endif
+
+                @if($errors->any())
+                <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
+                @endif
+                
+                <div class="signinform mt-3">
+                    <form action="{{route('jecrc.registration-store')}}" method="POST" class="sign-in-form" enctype="multipart/form-data">
+                        @csrf
+                        <h2 class="title">Register</h2>
+                        <h2 class="page_title">Please fill with details</h2>
+
+                        <div class="usernamew-100">
+                            <div class="input-field">
+                                <input type="text" name="full_name" id="user_name" placeholder="Enter your full name" autocomplete='false'>
+                            </div>
+                        </div>
+                           
+                        <div class="">
+                            <label for="formFile" class="input-label" class="form-label">Profile image :</label>
+                            <input class="form-control" name="profile_image" type="file" id="formFile">
+                            @if($errors->has('10_marksheet'))
+                            <li style="color: red">
+                                {{$errors->first('10_marksheet')}}
+                            </li>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                    <div class="input-field">
+                                        <input type="text" name="mobile_no"  placeholder="Enter your mobile no." autocomplete='false'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                    <div class="input-field">
+                                        <input type="email" name="email"  placeholder="example@gmail.com" autocomplete='false'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                    <div class="input-field">
+                                        <input type="text" name="father_name"  placeholder="Enter your father name" autocomplete='false'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                <label for="formFile" class="input-label" class="form-label" style="margin-bottom:-3px;">Date of Birth :</label>
+                                    <div class="input-field">
+                                        <input type="date" name="dob"  placeholder="enter your date of birth">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-2">
+                                    <select class="form-select select-input" name="course" aria-label="Default select example">
+                                    <option selected disabled>Select course</option>
+                                        <option value="Bca">BCA</option>
+                                        <option value="Mca">MCA</option>
+                                        <option value="B.Tech">B.tech</option>
+                                        <option value="M.Tech">M.tech</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="">
+                                    <label for="formFile" class="input-label" class="form-label">Upload 10th marksheet :</label>
+                                    <input class="form-control" name="10_marksheet" type="file" id="formFile">
+                                    @if($errors->has('10_marksheet'))
+                                    <li style="color: red">
+                                        {{$errors->first('10_marksheet')}}
+                                    </li>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="">
+                                    <label for="formFile" class="input-label" class="form-label">Upload 12th marksheet :</label>
+                                    <input class="form-control" name="12_marksheet" type="file" id="formFile">
+                                    @if($errors->has('12_marksheet'))
+                                    <li style="color: red">
+                                        {{$errors->first('12_marksheet')}}
+                                    </li>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-2">
+                                <label for="gender">Gender: </label>
+                            </div>
+                            <div class="col-2 ">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="1" checked>
+                                    <label class="form-check-label mr-4" for="exampleRadios1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input ml-2" type="radio" name="gender" id="exampleRadios2" value="2">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <input type="hidden" name="college_name" value="{{Session::get('collegeData')['college_name']}}">
+                        <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}"> --}}
+                        <input type="hidden" name="aadhaar_no" value="{{Session::get('userData')['aadhaar_no'] ? Session::get('userData')['aadhaar_no'] : ''}}">
+
+                        <div class="action_btn">
+                            <div class="sign_in_btn">
+                                <button class="submit-btn" type="submit">Sign up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39066431-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-39066431-1');
+</script>
+<script src="{{asset('js/aos.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        AOS.init();
+    });
+</script>
+
+<script>
+    $('.alert-success').delay(1000).fadeOut('slow');
+</script>
+
+
+
+</html>

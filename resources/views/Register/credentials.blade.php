@@ -22,7 +22,9 @@
     @endif
     
     <div class="form-container mt-4">
-        <p>Your username is <b>{{Session::get('credentials')['username']}}</b> and password <b>{{Session::get('credentials')['password']}}</b></p>
+        <h3>Your request is successfully submmited.</h3>
+        {{-- <p>Your username is <b>{{Session::get('credentials')['username']}}</b> and password <b>{{Session::get('credentials')['password']}}</b></p> --}}
+        <a class="btn btn-primary" href="{{route('college-list')}}">Home page</a>
     </div>
 </body>
 </html>
