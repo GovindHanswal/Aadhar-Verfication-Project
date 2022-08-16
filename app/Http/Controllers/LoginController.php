@@ -105,7 +105,6 @@ class LoginController extends Controller
      * function to logout from jecrc dashboard
      */
     public function jecrcLogout() {
-
         session()->forget('data');
         return redirect()->route('jecrc.login');
     }

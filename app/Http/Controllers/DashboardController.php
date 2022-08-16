@@ -40,8 +40,26 @@ class DashboardController extends Controller
                 ]);
             }
         }
+        return redirect()->route('jecrc.login');
+    }
+
+    /**
+     * reject applications list for jnu
+     */
+    public function jnuRejectStudentList() {
+
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                $rejectList = JnuStudents::where('status', "3")->get();
+                return view('Dashboard.rejectedList', [
+                    'rejectList' => $rejectList
+                ]);
+            }
+        }
         return redirect()->route('login');
-        
     }
 
     /**
@@ -158,5 +176,24 @@ class DashboardController extends Controller
         }else {
             return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
         }
+    }
+
+    /**
+     * reject applications list for jecrc
+     */
+    public function jecrcRejectStudentList() {
+
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                $rejectList = JecrcStudents::where('status', "3")->get();
+                return view('Jecrc.rejectedList', [
+                    'rejectList' => $rejectList
+                ]);
+            }
+        }
+        return redirect()->route('jecrc.login');
     }
 }

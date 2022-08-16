@@ -38,49 +38,21 @@
                 <i class='bx bx-search'></i>
                 <input type="text" placeholder="Search">
                 <span class="tooltip">Search</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-user'></i>
-                    <!----><span class="links_name">Student Details</span>
-                </a>
-                <span class="tooltip">Student Details</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-package'></i>
-                    <span class="links_name">Live Classes</span>
-                </a>
-                <span class="tooltip">Live CLasses</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-edit'></i>
-                    <span class="links_name">Online Exam</span>
-                </a>
-                <span class="tooltip">Online Exam</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxl-flickr-square'></i>
-                    <span class="links_name">Quick Quizez</span>
-                </a>
-                <span class="tooltip">Quick Quizez</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="links_name">Setting</span>
-                </a>
-                <span class="tooltip">Setting</span>
             </li> --}}
+            <li>
+                <a href="{{route('jecrc-dashboard')}}">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Applied Students</span>
+                </a>
+                <span class="tooltip">Applied Students</span>
+            </li>
+            <li>
+                <a href="{{route('jecrc-reject-list')}}">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Rejected Students</span>
+                </a>
+                <span class="tooltip">Rejected Students</span>
+            </li>
             <li>
                 <a href="{{route('jecrc.logout')}}">
                     <i class='bx bx-log-out'></i>
