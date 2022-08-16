@@ -67,6 +67,7 @@ Route::group([ 'prefix' => 'jnu' ], function ($router) {
     Route::get('admin/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
 
     Route::get('admin/approve/{id?}', [DashboardController::class, 'jnuApproveStudents'])->name('jnu-approve-students');
+    Route::get('admin/reject/{id?}', [DashboardController::class, 'jnuRejectStudents'])->name('jnu-reject-students');
    
 });
 
@@ -86,6 +87,7 @@ Route::group([ 'prefix' => 'jecrc' , 'namespace' => 'Jecrc' ], function ($router
     Route::get('admin/dashboard', [DashboardController::class, 'jecrcDashboard'])->name('jecrc-dashboard');
 
     Route::get('admin/approve/{id?}', [DashboardController::class, 'jecrcApproveStudents'])->name('jecrc-approve-students');
+    Route::get('admin/reject/{id?}', [DashboardController::class, 'jecrcRejectStudents'])->name('jecrc-reject-students');
 
    
 });

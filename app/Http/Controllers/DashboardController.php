@@ -44,6 +44,9 @@ class DashboardController extends Controller
         
     }
 
+    /**
+     * function to approve admission request for Jnu
+     */
     public function jnuApproveStudents($id) {
         $userCheck = false;
         
@@ -79,6 +82,29 @@ class DashboardController extends Controller
         }
     }
 
+    /**
+     * function to reject admission request for Jnu
+     */
+    public function jnuRejectStudents($id) {
+        if($id) {
+
+            $user = JnuStudents::where('aadhaar_no', $id)->first();
+            $user->update(['status' => "3"]);
+            
+            if($user) {
+                return redirect()->back()->with(['message' => 'Request rejected', 'success' => true]);
+            }
+            else {
+                return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
+            }
+        }else {
+            return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
+        }
+    }
+
+    /**
+     * function to approve admission request for Jecrc
+     */
     public function jecrcApproveStudents($id) {
         $userCheck = false;
         
@@ -111,6 +137,26 @@ class DashboardController extends Controller
             else {
                 return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
             }
+        }
+    }
+
+    /**
+     * function to reject admission request for jecrc
+     */
+    public function jecrcRejectStudents($id) {
+        if($id) {
+
+            $user = JnuStudents::where('aadhaar_no', $id)->first();
+            $user->update(['status' => "3"]);
+            
+            if($user) {
+                return redirect()->back()->with(['message' => 'Request rejected', 'success' => true]);
+            }
+            else {
+                return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
+            }
+        }else {
+            return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
         }
     }
 }

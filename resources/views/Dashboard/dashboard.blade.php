@@ -191,7 +191,7 @@
                         <td>{{$list['course']}}</td>
                         <td>
                             <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
-                            <a class="btn btn-danger btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Reject</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('jnu-reject-students', [$list['aadhaar_no']])}}">Reject</a>
                         </td>
                     </tr>
                 @php $i++ @endphp
