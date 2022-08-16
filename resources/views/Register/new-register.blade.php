@@ -11,31 +11,49 @@
 </head>
 
 <body>
-
     <div class="main-wrapper">
         <div class="left-container">
+            <div class="progress-bar">
+                <div class="step">
+                    <p>
+                    </p>
+                    <div class="bullet active no-transition" >
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-"></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet active">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check "></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+            </div>
             <div class="form-container register-form-container" data-aos="fade-right" data-aos-duration="1000">
-             
-                <!-- Alert message -->
-                @if(session('message'))
-                <div class="alert alert-success text-center">{{session('message')}}</div>
-                @elseif(session('error'))
-                <div class="alert alert-danger text-center">{{session('error')}}</div>
-                @endif
-
-                @if($errors->any())
-                <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
-                @endif
-                
-                <div class="signinform mt-3">
+                <div class="signinform">
                     <form action="{{route('register-create')}}" method="POST" class="sign-in-form" enctype="multipart/form-data">
                         @csrf
                         <h2 class="title">Register</h2>
-                        <h2 class="page_title">Please fill with details</h2>
-
                         <div class="usernamew-100">
                             <div class="input-field">
                                 <input type="text" name="full_name" id="user_name" placeholder="Enter your full name" autocomplete='false'>
+                                @if($errors->has('full_name'))
+                                <li style="color: red">
+                                    {{$errors->first('full_name')}}
+                                </li>
+                                @endif
                             </div>
                         </div>
                            
@@ -54,6 +72,11 @@
                                 <div class="usernamew-100">
                                     <div class="input-field">
                                         <input type="text" name="mobile_no"  placeholder="Enter your mobile no." autocomplete='false'>
+                                        @if($errors->has('mobile_no'))
+                                        <li style="color: red">
+                                            {{$errors->first('mobile_no')}}
+                                        </li>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -61,6 +84,11 @@
                                 <div class="usernamew-100">
                                     <div class="input-field">
                                         <input type="email" name="email"  placeholder="example@gmail.com" autocomplete='false'>
+                                        @if($errors->has('email'))
+                                        <li style="color: red">
+                                            {{$errors->first('email')}}
+                                        </li>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -71,6 +99,11 @@
                                 <div class="usernamew-100">
                                     <div class="input-field">
                                         <input type="text" name="father_name"  placeholder="Enter your father name" autocomplete='false'>
+                                        @if($errors->has('father_name'))
+                                        <li style="color: red">
+                                            {{$errors->first('father_name')}}
+                                        </li>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -80,6 +113,11 @@
                                     <div class="input-field">
                                         <input type="date" name="dob"  placeholder="enter your date of birth">
                                     </div>
+                                    @if($errors->has('dob'))
+                                    <li style="color: red">
+                                        {{$errors->first('dob')}}
+                                    </li>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -94,6 +132,11 @@
                                         <option value="B.Tech">B.tech</option>
                                         <option value="M.Tech">M.tech</option>
                                     </select>
+                                    @if($errors->has('course'))
+                                    <li style="color: red">
+                                        {{$errors->first('course')}}
+                                    </li>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -147,7 +190,7 @@
                         <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}"> --}}
                         <input type="hidden" name="aadhaar_no" value="{{Session::get('userData')['aadhaar_no'] ? Session::get('userData')['aadhaar_no'] : ''}}">
 
-                        <div class="action_btn">
+                        <div class="action_btn" style="margin-top:20px">
                             <div class="sign_in_btn">
                                 <button class="submit-btn" type="submit">Sign up</button>
                             </div>

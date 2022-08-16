@@ -14,7 +14,7 @@
 <body>
 
     <div class="main-wrapper jecrc-page">
-    <div class="right-container">
+        <div class="right-container">
             <div class="content">
                 <h3>Jecrc University</h3>
                 <!-- <p>Verify yourself</p> -->
@@ -28,6 +28,35 @@
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>
         <div class="left-container">
+            <div class="progress-bar">
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+            </div>
             <div class="form-container">
 
                 <div class="signinform">

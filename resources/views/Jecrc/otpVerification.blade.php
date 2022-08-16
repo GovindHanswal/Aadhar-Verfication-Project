@@ -27,6 +27,35 @@
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>
         <div class="left-container">
+            <div class="progress-bar">
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet active" >
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-"></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check "></div>
+                </div>
+                <div class="step">
+                    <p>
+                            
+                    </p>
+                    <div class="bullet">
+                        <span></span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+            </div>
             <div class="form-container">
 
                 <div class="signinform">
