@@ -30,7 +30,7 @@ class CreateJecrcStudentsTable extends Migration
             $table->string('profile_image');
             $table->string('10_marksheet');
             $table->string('12_marksheet');
-            $table->boolean('is_active');
+            $table->string('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

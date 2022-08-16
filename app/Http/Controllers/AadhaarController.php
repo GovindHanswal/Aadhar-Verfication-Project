@@ -10,7 +10,7 @@ use App\Models\VerificationOtp;
 use App\Http\Controllers\OtpController;
 use App\Models\RegisteredAadhaar;
 use App\Models\JecrcStudents;
-use App\Models\Students;
+use App\Models\JnuStudents;
 
 use Illuminate\Http\Request;
 
@@ -93,7 +93,7 @@ class AadhaarController extends Controller
             'aadhaar_no' => 'required'
         ]);
 
-        $user = Students::where('aadhaar_no', $request['aadhaar_no'])->first();
+        $user = JnuStudents::where('aadhaar_no', $request['aadhaar_no'])->first();
 
         if($user == null) {
             $userCheck = true;

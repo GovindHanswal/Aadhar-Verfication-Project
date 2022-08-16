@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Storage;
 use App\Models\User;
-use App\Models\Students;
+use App\Models\JnuStudents;
 use App\Models\JecrcStudents;
 use App\Models\RegisteredAadhaar;
 
@@ -69,18 +69,19 @@ class RegisterController extends Controller
             '12_marksheet' => $marksheet_12_path,
             'profile_image' => $profile_path,
             'college_id' => "C-140623",
-            'is_active' => false
+            'status' => 1,
         ];
 
-        $random = rand(10000, 99999);
 
-        $username = "U" . $random;
-        $password = Hash::make($username);
+        // $random = rand(10000, 99999);
 
-        $data['username'] = $username;
-        $data['password'] = $password;
+        // $username = "U" . $random;
+        // $password = Hash::make($username);
 
-        $store = Students::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
+        // $data['username'] = $username;
+        // $data['password'] = $password;
+
+        $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
 
         if($store) {
 
@@ -91,14 +92,14 @@ class RegisterController extends Controller
 
             // RegisteredAadhaar::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $registedData);
 
-            $data = [
-                'username' => $username,
-                'password' => $username
-            ];
-            session()->forget('credentials');
-            session()->put('credentials', $data);
+            // $data = [
+            //     'username' => $username,
+            //     'password' => $username
+            // ];
+            // session()->forget('credentials');
+            // session()->put('credentials', $data);
 
-            return redirect()->route('credential-page')->with(['message' => 'user successfully register', 'success' => true]);
+            return redirect()->route('credential-page')->with(['message' => 'Your request seccessfully submitted', 'success' => true]);
         }
         else {
             return redirect()->back()->with(['error' => 'Some error occur', 'success' => false]);
@@ -157,7 +158,7 @@ class RegisterController extends Controller
             '12_marksheet' => $marksheet_12_path,
             'profile_image' => $profile_path,
             'college_id' => "C-435672",
-            'is_active' => false
+            'status' => 1,
         ];
 
         // $random = rand(10000, 99999);

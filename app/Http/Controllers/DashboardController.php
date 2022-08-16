@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Students;
+use App\Models\JnuStudents;
 use App\Models\JecrcStudents;
 use App\Models\RegisteredAadhaar;
 
@@ -18,7 +18,7 @@ class DashboardController extends Controller
             $user = session()->get('data');
             
             if($user['token']) {
-                $requestList = Students::where('is_active', false)->get();
+                $requestList = JnuStudents::where('status', "1")->get();
                 return view('Dashboard.dashboard', [
                     'requestList' => $requestList
                 ]);
@@ -34,7 +34,7 @@ class DashboardController extends Controller
             $user = session()->get('data');
             
             if($user['token']) {
-                $requestList = JecrcStudents::where('is_active', false)->get();
+                $requestList = JecrcStudents::where('status', "1")->get();
                 return view('Jecrc.dashboard', [
                     'requestList' =>$requestList
                 ]);
@@ -56,8 +56,8 @@ class DashboardController extends Controller
             }
 
             if($userCheck) {
-                $user = Students::where('aadhaar_no', $id)->first();
-                $user->update(['is_active' => true]);
+                $user = JnuStudents::where('aadhaar_no', $id)->first();
+                $user->update(['status' => "2"]);
 
                 $data = [
                     'aadhaar_no' => $id,
@@ -92,7 +92,7 @@ class DashboardController extends Controller
 
             if($userCheck) {
                 $user = jecrcStudents::where('aadhaar_no', $id)->first();
-                $user->update(['is_active' => true]);
+                $user->update(['status' => "2"]);
 
                 $data = [
                     'aadhaar_no' => $id,

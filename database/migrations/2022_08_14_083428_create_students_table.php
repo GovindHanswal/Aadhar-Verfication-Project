@@ -31,6 +31,7 @@ class CreateStudentsTable extends Migration
             $table->string('10_marksheet');
             $table->string('12_marksheet');
             $table->boolean('is_active');
+            $table->boolean('is_rejected');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

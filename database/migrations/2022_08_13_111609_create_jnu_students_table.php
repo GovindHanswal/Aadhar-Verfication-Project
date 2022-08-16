@@ -24,14 +24,13 @@ class CreateJnuStudentsTable extends Migration
             // $table->string('password');
             $table->string('dob');
             $table->string('college_id');
-            $table->string('college_name');
             $table->string('father_name');
             $table->string('course');
             $table->string('gender');
             $table->string('profile_image');
             $table->string('10_marksheet');
             $table->string('12_marksheet');
-            $table->boolean('is_active');
+            $table->string('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

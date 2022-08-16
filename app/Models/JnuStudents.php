@@ -9,11 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Students extends Authenticatable
+class JnuStudents extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'students';
+    protected $table = 'jnu_students';
     
     /**
      * The attributes that are mass assignable.
@@ -22,7 +22,7 @@ class Students extends Authenticatable
      */
     
     protected $fillable = [
-        'full_name', 'username', 'password', 'aadhaar_no', 'father_name', 'mobile_no', 'dob', 'college_id', 'college_name', 'role', 'profile_image', 'is_active', 'email', 'course', 'gender', '10_marksheet', '12_marksheet'
+        'full_name', 'username', 'password', 'aadhaar_no', 'father_name', 'mobile_no', 'dob', 'college_id', 'college_name', 'role', 'profile_image', 'status', 'email', 'course', 'gender', '10_marksheet', '12_marksheet'
     ];
 
     /**

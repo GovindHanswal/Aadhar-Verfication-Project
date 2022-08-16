@@ -21,7 +21,7 @@ class JecrcStudents extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'full_name', 'username', 'password', 'aadhaar_no', 'father_name', 'mobile_no', 'dob', 'college_id', 'college_name', 'role', 'profile_image', 'is_active', 'email', 'course', 'gender', '10_marksheet', '12_marksheet'
+        'full_name', 'username', 'password', 'aadhaar_no', 'father_name', 'mobile_no', 'dob', 'college_id', 'college_name', 'role', 'profile_image', 'status', 'email', 'course', 'gender', '10_marksheet', '12_marksheet'
     ];
     
     /**

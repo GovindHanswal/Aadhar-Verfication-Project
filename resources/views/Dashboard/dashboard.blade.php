@@ -171,11 +171,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Student Name</th>
-                    <th>Aadhar Number</th>
-                    <th>Course Name</th>
-                    <th>Status</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Student Name</th>
+                    <th class="text-center">Aadhaar Number</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Course Name</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -186,9 +187,11 @@
                         <td>{{$i}}</td>
                         <td>{{$list['full_name']}}</td>
                         <td>{{$list['aadhaar_no']}}</td>
+                        <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>
                         <td>
-                            <a class="approve-btn" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
+                            <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Reject</a>
                         </td>
                     </tr>
                 @php $i++ @endphp
