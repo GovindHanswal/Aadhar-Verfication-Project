@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jecrc Dashboard</title>
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <!-- Boxicon-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -26,7 +26,7 @@
                 <div class="profile_detail">
                     <img src="12345.jpg" alt="">
                     <div class="name_job">
-                        <div class="name">Govind Hanswal</div>
+                        <div class="name">Admin</div>
                         <div class="job">WEb Devlopement</div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <span class="tooltip">Setting</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('jecrc.logout')}}">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Logout</span>
                 </a>
@@ -161,6 +161,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Student Name</th>
                     <th>Aadhar Number</th>
                     <th>Course Name</th>
@@ -168,8 +169,11 @@
                 </tr>
             </thead>
             <tbody>
+                @if($requestList)
+                @php $i = 1; @endphp
                 @foreach($requestList as $list)
                     <tr>
+                        <td>{{$i}}</td>
                         <td>{{$list['full_name']}}</td>
                         <td>{{$list['aadhaar_no']}}</td>
                         <td>{{$list['course']}}</td>
@@ -177,7 +181,13 @@
                             <a class="approve-btn" href="">Approve</a>
                         </td>
                     </tr>
+                @php $i++ @endphp
                 @endforeach
+                @else
+                <tr>
+                    <td colspan="12" class="text-center"><b>No Data Available !!</b></td>
+                </tr>
+                @endif
             </tbody>
         </table>
     </div>

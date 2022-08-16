@@ -40,11 +40,6 @@ Route::group([ 'prefix' => 'admin' ], function ($router) {
 });
 
 
-Route::get('/login', [LoginController::class, 'loginView'])->name('login');
-Route::post('/login/authenticate', [LoginController::class, 'authenticate'])->name('login.authenticate');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-
 Route::post('/verify-aadhaar-details', [AadhaarController::class, 'verifyAadhaarDetails'])->name('verify-aadhaar');
 Route::post('/verify-otp', [AadhaarController::class, 'verifyOtp'])->name('verify-otp');
 Route::get('/resend-otp/{mobile_no?}', [AadhaarController::class, 'resendOtp']);
@@ -65,7 +60,11 @@ Route::group([ 'prefix' => 'jnu' ], function ($router) {
     Route::get('/verify-aadhaar', [AadhaarController::class, 'verifyAadhaarPage'])->name('verify-page');
     Route::get('/verify-mobile', [AadhaarController::class, 'verifyMobilePage'])->name('verify-mobile');
     Route::get('/registration', [RegisterController::class, 'registerCreatePage'])->name('register-createPage');
-    Route::get('/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
+    
+    Route::get('admin/login', [LoginController::class, 'loginView'])->name('login');
+    Route::post('admin/login/authenticate', [LoginController::class, 'authenticate'])->name('login.authenticate');
+    Route::get('admin/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('admin/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
    
 });
 
@@ -78,8 +77,12 @@ Route::group([ 'prefix' => 'jecrc' , 'namespace' => 'Jecrc' ], function ($router
     Route::get('verify-aadhaar', [AadhaarController::class, 'jecrcAadhaarVerificationPage'])->name('jecrc.aadhaarVerificationPage');
     Route::post('/verify-aadhaar-details', [AadhaarController::class, 'jecrcVerifyAadhaarDetails'])->name('jecrc.verify-details');
     Route::post('/verify-otp', [AadhaarController::class, 'jecrcVerifyOtp'])->name('jecrc.verify-otp');
-    Route::get('/dashboard', [DashboardController::class, 'jecrcDashboard'])->name('jecrc-dashboard');
     
+    Route::get('admin/login', [LoginController::class, 'jecrcLoginView'])->name('jecrc.login');
+    Route::post('admin/login-authenticate', [LoginController::class, 'jecrcAuthenticate'])->name('jecrc.login-authenticate');
+    Route::get('admin/logout', [LoginController::class, 'jecrcLogout'])->name('jecrc.logout');
+    Route::get('admin/dashboard', [DashboardController::class, 'jecrcDashboard'])->name('jecrc-dashboard');
+
    
 });
 

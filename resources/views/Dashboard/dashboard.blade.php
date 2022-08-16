@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="sidebar">
+    <div class="sidebar active">
         <div class="logo_contant">
             <div class="logo">
                 <i class='bx bxl-heroku'></i>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <ul class="nav_list">
-            <li>
+            {{-- <li>
                 <i class='bx bx-search'></i>
                 <input type="text" placeholder="Search">
                 <span class="tooltip">Search</span>
@@ -78,7 +78,7 @@
                     <span class="links_name">Setting</span>
                 </a>
                 <span class="tooltip">Setting</span>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{route('logout')}}">
                     <i class='bx bx-log-out'></i>
@@ -160,6 +160,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Student Name</th>
                     <th>Aadhar Number</th>
                     <th>Course Name</th>
@@ -167,36 +168,25 @@
                 </tr>
             </thead>
             <tbody>
+                @if($requestList)
+                @php $i = 1; @endphp
+                @foreach($requestList as $list)
+                    <tr>
+                        <td>{{$i}}</td>
+                        <td>{{$list['full_name']}}</td>
+                        <td>{{$list['aadhaar_no']}}</td>
+                        <td>{{$list['course']}}</td>
+                        <td>
+                            <a class="approve-btn" href="">Approve</a>
+                        </td>
+                    </tr>
+                @php $i++ @endphp
+                @endforeach
+                @else
                 <tr>
-                    <td>Ravi</td>
-                    <td>336532434343</td>
-                    <td>Android DevlopMent</td>
-                    <td>Not Aprooved</td>
+                    <td colspan="12" class="text-center"><b>No Data Available !!</b></td>
                 </tr>
-                <tr>
-                    <td>Manas Kumar</td>
-                    <td>336672434242</td>
-                    <td>Cloud Computing</td>
-                    <td>Aprooved</td>
-                </tr>
-                <tr>
-                    <td>Govind Hanswal</td>
-                    <td>336532434242</td>
-                    <td>Web DevlopMent</td>
-                    <td>Aprooved</td>
-                </tr>
-                <tr>
-                    <td>Arvind Budania</td>
-                    <td>336534434242</td>
-                    <td>Networking</td>
-                    <td>Not Aprooved</td>
-                </tr>
-                <tr>
-                    <td>Tushar Verma</td>
-                    <td>676532434242</td>
-                    <td>Profetional DevlopMent</td>
-                    <td>Aprooved</td>
-                </tr>
+                @endif
             </tbody>
         </table>
     </div>

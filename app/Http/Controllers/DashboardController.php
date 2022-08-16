@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Students;
 use App\Models\JecrcStudents;
 
 class DashboardController extends Controller
@@ -16,18 +17,29 @@ class DashboardController extends Controller
             $user = session()->get('data');
             
             if($user['token']) {
-                return view('Dashboard.dashboard');
+                $requestList = Students::where('is_active', false)->get();
+                return view('Dashboard.dashboard', [
+                    'requestList' => $requestList
+                ]);
             }
         }
         return redirect()->route('login');
     }
 
     public function jecrcDashboard() {
-        
-        $requestList = JecrcStudents::where('is_active', false)->get();
 
-        return view('Jecrc.dashboard', [
-            'requestList' =>$requestList
-        ]);
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                $requestList = JecrcStudents::where('is_active', false)->get();
+                return view('Jecrc.dashboard', [
+                    'requestList' =>$requestList
+                ]);
+            }
+        }
+        return redirect()->route('login');
+        
     }
 }
