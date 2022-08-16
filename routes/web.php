@@ -65,6 +65,8 @@ Route::group([ 'prefix' => 'jnu' ], function ($router) {
     Route::post('admin/login/authenticate', [LoginController::class, 'authenticate'])->name('login.authenticate');
     Route::get('admin/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('admin/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
+
+    Route::get('admin/approve/{id?}', [DashboardController::class, 'jnuApproveStudents'])->name('jnu-approve-students');
    
 });
 
@@ -82,6 +84,8 @@ Route::group([ 'prefix' => 'jecrc' , 'namespace' => 'Jecrc' ], function ($router
     Route::post('admin/login-authenticate', [LoginController::class, 'jecrcAuthenticate'])->name('jecrc.login-authenticate');
     Route::get('admin/logout', [LoginController::class, 'jecrcLogout'])->name('jecrc.logout');
     Route::get('admin/dashboard', [DashboardController::class, 'jecrcDashboard'])->name('jecrc-dashboard');
+
+    Route::get('admin/approve/{id?}', [DashboardController::class, 'jecrcApproveStudents'])->name('jecrc-approve-students');
 
    
 });

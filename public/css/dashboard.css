@@ -332,6 +332,8 @@ left: 240px;
     width: 80%;
     left: 60px;
     transition: all 0.5s ease;
+    margin-left: 30px;
+    margin-top: 20px;
 }
 
 .heading {

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jecrc Dashboard</title>
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Boxicon-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
@@ -33,7 +34,7 @@
             </div>
         </div>
         <ul class="nav_list">
-            <li>
+            {{-- <li>
                 <i class='bx bx-search'></i>
                 <input type="text" placeholder="Search">
                 <span class="tooltip">Search</span>
@@ -79,7 +80,7 @@
                     <span class="links_name">Setting</span>
                 </a>
                 <span class="tooltip">Setting</span>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{route('jecrc.logout')}}">
                     <i class='bx bx-log-out'></i>
@@ -158,14 +159,26 @@
 -->
     <div class="table-container">
         <h1 class="heading">Applied Students</h1>
+
+        <!-- Alert message -->
+        @if(session('message'))
+       <div class="alert alert-success text-center">{{session('message')}}</div>
+       @elseif(session('error'))
+       <div class="alert alert-danger text-center">{{session('error')}}</div>
+       @endif
+
+       @if($errors->any())
+       <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
+       @endif
+
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Student Name</th>
-                    <th>Aadhar Number</th>
-                    <th>Course Name</th>
-                    <th>Status</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Student Name</th>
+                    <th class="text-center">Aadhar Number</th>
+                    <th class="text-center">Course Name</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -178,7 +191,8 @@
                         <td>{{$list['aadhaar_no']}}</td>
                         <td>{{$list['course']}}</td>
                         <td>
-                            <a class="approve-btn" href="">Approve</a>
+                            <a class="btn btn-success btn-sm" href="{{route('jecrc-approve-students', [$list['aadhaar_no']])}}">Approve</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('jecrc-approve-students', [$list['aadhaar_no']])}}">Reject</a>
                         </td>
                     </tr>
                 @php $i++ @endphp
