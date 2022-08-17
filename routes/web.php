@@ -64,7 +64,7 @@ Route::group([ 'prefix' => 'jnu' ], function ($router) {
     Route::get('admin/login', [LoginController::class, 'loginView'])->name('login');
     Route::post('admin/login/authenticate', [LoginController::class, 'authenticate'])->name('login.authenticate');
     Route::get('admin/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('admin/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard');
+    Route::get('admin/dashboard', [DashboardController::class, 'jnuDashboard'])->name('jnu-dashboard'); 
 
     Route::get('admin/approve/{id?}', [DashboardController::class, 'jnuApproveStudents'])->name('jnu-approve-students');
     Route::get('admin/reject/{id?}', [DashboardController::class, 'jnuRejectStudents'])->name('jnu-reject-students');
