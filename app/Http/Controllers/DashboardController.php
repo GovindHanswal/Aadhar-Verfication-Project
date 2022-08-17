@@ -164,7 +164,7 @@ class DashboardController extends Controller
     public function jecrcRejectStudents($id) {
         if($id) {
 
-            $user = JnuStudents::where('aadhaar_no', $id)->first();
+            $user = JecrcStudents::where('aadhaar_no', $id)->first();
             $user->update(['status' => "3"]);
             
             if($user) {
