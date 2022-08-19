@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mail;
 use App\Models\JnuStudents;
 use App\Models\JecrcStudents;
 use App\Models\RegisteredAadhaar;
@@ -118,6 +119,24 @@ class DashboardController extends Controller
             if($userCheck) {
                 $user = JnuStudents::where('aadhaar_no', $id)->first();
                 $user->update(['status' => "2"]);
+
+                // $random = rand(10000, 99999);
+                // $username = "U" . $random;
+                // $password = Hash::make($username);
+
+                // $data['username'] = $username;
+                // $data['password'] = $password;
+
+                // dd($user->full_name);
+
+                $data = ['data' => 'Your admission request is Approved '];
+                $user['email'] = $user->email;
+                $user['name']= $user->full_name;
+
+                Mail::send('Mail.mail', $data, function($messages) use($user) {
+                    $messages->to($user['email']);
+                    $messages->subject('Hello ' . $user['name']);
+                });
 
                 $data = [
                     'aadhaar_no' => $id,

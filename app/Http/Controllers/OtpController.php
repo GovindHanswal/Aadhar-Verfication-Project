@@ -16,12 +16,6 @@ class OtpController extends Controller
         // generate random otp
         $otp = rand(100000, 999999);
 
-        // String of all alphanumeric character
-        // $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    
-        // Shuffle the $str_result and returns substring of specified length
-        // $code = substr(str_shuffle($str_result),0, 20);
-
         $otpDetails = [
             'mobile_no' => $mobile_no,
             'otp' => $otp
