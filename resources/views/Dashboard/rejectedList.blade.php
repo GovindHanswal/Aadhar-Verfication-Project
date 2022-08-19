@@ -48,9 +48,16 @@
             <li>
                 <a href="{{route('jnu-reject-list')}}">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Rejected Students</span>
+                    <span class="links_name">Waiting Students</span>
                 </a>
-                <span class="tooltip">Rejected Students</span>
+                <span class="tooltip">Waiting Students</span>
+            </li>
+            <li>
+                <a href="{{route('jnu-approve-list')}}">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Approve Students</span>
+                </a>
+                <span class="tooltip">Approve Students</span>
             </li>
             <li>
                 <a href="{{route('logout')}}">

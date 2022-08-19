@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jnu Dashboard</title>
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Boxicon-->
@@ -39,7 +39,7 @@
                 <span class="tooltip">Search</span>
             </li> --}}
             <li>
-                <a href="{{route('jnu-dashboard')}}" class="active-tab">
+                <a href="{{route('jnu-dashboard')}}">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Applied Students</span>
                 </a>
@@ -70,73 +70,8 @@
 
         </ul>
     </div>
-    <!--
-    <div class="main-div">
-        <section class="main">
-            <div class="main_top">
-                <h1>Courses</h1>
-                <i class='bx bxs-book-reader'></i>
-            </div>
-            <div class="main-courses">
-                <div class="card">
-                    <i class='bx bx-analyse'></i>
-                    <h3>Data Analysis</h3>
-                    <p>Join over 2 Millon Student</p>
-                    <button>Join</button>
-                </div>
-                <div class="card">
-                    <i class='bx bx-cloud'></i>
-                    <h3>Cloud Computing</h3>
-                    <p>Join over 1 Millon Student</p>
-                    <button>Join</button>
-                </div>
-                <div class="card">
-                    <i class='bx bxl-android'></i>
-                    <h3>Android Devlopment</h3>
-                    <p>Join over 3 Millon Student</p>
-                    <button>Join</button>
-                </div>
-                <div class="card">
-                    <i class='bx bx-data'></i>
-                    <h3>SQL</h3>
-                    <p>Join over 5 Millon Student</p>
-                    <button>Join</button>
-                </div>
-            </div>
-
-        </section>
-        <section class="main">
-
-            <div class="main_top">
-                <h3>My courses</h3>
-                <i class='bx bx-play-circle'></i>
-            </div>
-            <div class="main-courses">
-                <ul>
-                    <li class="active">In Progress</li>
-                    <li>Incoming</li>
-                    <li>Completed</li>
-                </ul>
-                <div class="card">
-                    <i class='bx bx-analyse'></i>
-                    <h3>Web Development</h3>
-                    <p>Course in progress..0%</p>
-                    <button>View</button>
-                </div>
-                <div class="card">
-                    <i class='bx bx-cloud'></i>
-                    <h3>Blockchain Development</h3>
-                    <p>Course in progress..0%</p>
-                    <button>View</button>
-                </div>
-
-            </div>
-
-        </section>
-    </div>
--->
     <div class="table-container">
-        <h1 class="heading">Applied Students</h1>
+        <h1 class="heading">Approved Students</h1>
         <!-- Alert message -->
         @if(session('message'))
         <div class="alert alert-success text-center">{{session('message')}}</div>
@@ -155,23 +90,23 @@
                     <th class="text-center">Aadhaar Number</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Course Name</th>
-                    <th class="text-center">Action</th>
+                    {{-- <th class="text-center">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
-                @if($requestList)
+                @if($approvedList)
                 @php $i = 1; @endphp
-                @foreach($requestList as $list)
+                @foreach($approvedList as $list)
                     <tr>
                         <td>{{$i}}</td>
                         <td>{{$list['full_name']}}</td>
                         <td>{{$list['aadhaar_no']}}</td>
                         <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>
-                        <td>
+                        {{-- <td>
                             <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
                             <a class="btn btn-danger btn-sm" href="{{route('jnu-reject-students', [$list['aadhaar_no']])}}">Reject</a>
-                        </td>
+                        </td> --}}
                     </tr>
                 @php $i++ @endphp
                 @endforeach

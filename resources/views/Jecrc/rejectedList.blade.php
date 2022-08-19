@@ -53,6 +53,13 @@
                 <span class="tooltip">Rejected Students</span>
             </li>
             <li>
+                <a href="{{route('jecrc-approve-list')}}">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Approved Students</span>
+                </a>
+                <span class="tooltip">Approved Students</span>
+            </li>
+            <li>
                 <a href="{{route('jecrc.logout')}}">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Logout</span>

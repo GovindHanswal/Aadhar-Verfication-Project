@@ -63,6 +63,45 @@ class DashboardController extends Controller
     }
 
     /**
+     * approve applications list for jnu
+     */
+    public function jnuApproveStudentList() {
+
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                $approvedList = JnuStudents::where('status', "2")->get();
+                return view('Dashboard.approvedList', [
+                    'approvedList' => $approvedList
+                ]);
+            }
+        }
+        return redirect()->route('login');
+    }
+
+    /**
+     * approve applications list for jecrc
+     */
+    public function jecrcApproveStudentList() {
+
+        if(session()->has('data')){
+
+            $user = session()->get('data');
+            
+            if($user['token']) {
+                $approvedList = JecrcStudents::where('status', "2")->get();
+                return view('Jecrc.approvedList', [
+                    'approvedList' => $approvedList
+                ]);
+            }
+        }
+        return redirect()->route('login');
+    }
+
+
+    /**
      * function to approve admission request for Jnu
      */
     public function jnuApproveStudents($id) {
