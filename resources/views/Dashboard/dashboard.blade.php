@@ -152,7 +152,7 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">Student Name</th>
-                    <th class="text-center">Aadhaar Number</th>
+                    <th class="text-center">Aadhaar Number/unique id</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Course Name</th>
                     <th class="text-center">Action</th>
@@ -165,12 +165,16 @@
                     <tr>
                         <td>{{$i}}</td>
                         <td>{{$list['full_name']}}</td>
-                        <td>{{$list['aadhaar_no']}}</td>
+                        @if($list['aadhaar_no'])
+                            <td>{{$list['aadhaar_no']}}</td>
+                        @elseif($list['user_id'])
+                            <td>{{$list['user_id']}}</td>
+                        @endif
                         <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>
                         <td>
-                            <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
-                            <a class="btn btn-danger btn-sm" href="{{route('jnu-reject-students', [$list['aadhaar_no']])}}">Reject</a>
+                            <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [($list['aadhaar_no'] ? $list['aadhaar_no'] : $list['user_id'])])}}">Approve</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('jnu-reject-students', [($list['aadhaar_no'] ? $list['aadhaar_no'] : $list['user_id'])])}}">Reject</a>
                         </td>
                     </tr>
                 @php $i++ @endphp

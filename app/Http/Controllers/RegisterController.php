@@ -102,8 +102,8 @@ class RegisterController extends Controller
         if($store) {
 
             $registeredData = [
-                'aadhaar_no' => "",
-                'user_id' => $request['user_id'],
+                'aadhaar_no' => $request['aadhaar_no'] ? $request['aadhaar_no'] : "",
+                'user_id' =>  $request['user_id'] ? $request['user_id'] : "",
                 'college_id' => "",
                 'status' => 1
             ];
