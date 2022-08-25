@@ -188,7 +188,12 @@
 
                         {{-- <input type="hidden" name="college_name" value="{{Session::get('collegeData')['college_name']}}">
                         <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}"> --}}
-                        {{-- <input type="hidden" name="aadhaar_no" value="{{Session::get('userData')['aadhaar_no'] ? Session::get('userData')['aadhaar_no'] : ''}}"> --}}
+
+                        @if(isset(Session::get('userData')['aadhaar_no']))
+                            <input type="hidden" name="aadhaar_no" value="{{Session::get('userData')['aadhaar_no'] ? Session::get('userData')['aadhaar_no'] : ''}}">
+                        @elseif(isset(Session::get('userData')['user_id']))
+                            <input type="hidden" name="user_id" value="{{Session::get('userData')['user_id'] ? Session::get('userData')['user_id'] : ''}}">
+                        @endif
 
                         <div class="action_btn" style="margin-top:20px">
                             <div class="sign_in_btn">

@@ -82,6 +82,15 @@ class MarksheetController extends Controller
         }
 
         if($name_check && $father_name_check && $mother_name_check && $dob_check) {
+
+            $id = $request['10th_roll'] . $request['12th_roll'];
+
+            $userData = [
+                'user_id' => $id,
+            ];
+            session()->forget('userData');
+            session()->put('userData', $userData);
+
             return redirect()->route('register-createPage')->with(['message' => 'Successfully verified', 'success' => true]);
         }
         else {

@@ -17,7 +17,8 @@ class CreateJnuStudentsTable extends Migration
             $table->id();
             $table->string('full_name');
             // $table->string('username')->unique();
-            $table->string('aadhaar_no')->unique();
+            $table->string('aadhaar_no')->unique()->nullable();
+            $table->string('user_id')->unique()->nullable();
             $table->integer('role');
             $table->string('email')->unique();
             $table->string('mobile_no');

@@ -40,7 +40,8 @@ class RegisterController extends Controller
             'email' => 'required',
             'course' => 'required',
             'gender' => 'required',
-            'aadhaar_no' => 'required',
+            'aadhaar_no' => 'required_without:user_id',
+            'user_id' => 'required_without:aadhaar_no',
             '10_marksheet' => 'required',
             '12_marksheet' => 'required',
             'profile_image' => 'required'
@@ -52,7 +53,7 @@ class RegisterController extends Controller
         $marksheet_10 = $request['10_marksheet'];
         $marksheet_10_path = Storage::putFile('marksheet/tenth', $marksheet_10);
 
-        $marksheet_12 = $request['10_marksheet'];
+        $marksheet_12 = $request['12_marksheet'];
         $marksheet_12_path = Storage::putFile('marksheet/twelth', $marksheet_12);
 
         $data = [
@@ -64,7 +65,7 @@ class RegisterController extends Controller
             'course' => $request['course'],
             'gender' => $request['gender'],
             'role' => 2,
-            'aadhaar_no' => $request['aadhaar_no'],
+            // 'aadhaar_no' => $request['aadhaar_no'],
             '10_marksheet' => $marksheet_10_path,
             '12_marksheet' => $marksheet_12_path,
             'profile_image' => $profile_path,
@@ -72,6 +73,15 @@ class RegisterController extends Controller
             'status' => 1,
         ];
 
+        if($request['aadhaar_no']) {
+            $data['aadhaar_no'] = $request['aadhaar_no'];
+            $data['user_id'] = "";
+        }
+        
+        if($request['user_id']) {
+            $data['aadhaar_no'] = "";
+            $data['user_id'] = $request['user_id'];
+        }
 
         // $random = rand(10000, 99999);
 
@@ -81,7 +91,13 @@ class RegisterController extends Controller
         // $data['username'] = $username;
         // $data['password'] = $password;
 
-        $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
+        if($request['aadhaar_no']) {
+            $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
+        }
+
+        if($request['user_id']) {
+            $store = JnuStudents::updateOrCreate(['user_id' => $request['user_id']], $data);
+        }
 
         if($store) {
 
