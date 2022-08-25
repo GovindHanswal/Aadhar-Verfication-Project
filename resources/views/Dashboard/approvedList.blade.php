@@ -90,7 +90,7 @@
                     <th class="text-center">Aadhaar Number</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Course Name</th>
-                    {{-- <th class="text-center">Action</th> --}}
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,10 +103,9 @@
                         <td>{{$list['aadhaar_no']}}</td>
                         <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>
-                        {{-- <td>
-                            <a class="btn btn-success btn-sm" href="{{route('jnu-approve-students', [$list['aadhaar_no']])}}">Approve</a>
-                            <a class="btn btn-danger btn-sm" href="{{route('jnu-reject-students', [$list['aadhaar_no']])}}">Reject</a>
-                        </td> --}}
+                        <td>
+                            <a class="btn btn-danger btn-sm" href="{{route('jnu-remove-students', [$list['aadhaar_no']])}}">Remove</a>
+                        </td>
                     </tr>
                 @php $i++ @endphp
                 @endforeach

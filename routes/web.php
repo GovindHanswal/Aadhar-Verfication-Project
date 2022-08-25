@@ -68,6 +68,7 @@ Route::group([ 'prefix' => 'jnu' ], function ($router) {
 
     Route::get('admin/approve/{id?}', [DashboardController::class, 'jnuApproveStudents'])->name('jnu-approve-students');
     Route::get('admin/reject/{id?}', [DashboardController::class, 'jnuRejectStudents'])->name('jnu-reject-students');
+    Route::get('admin/remove/{id?}', [DashboardController::class, 'jnuRemoveStudents'])->name('jnu-remove-students');
 
     Route::get('admin/reject-list', [DashboardController::class, 'jnuRejectStudentList'])->name('jnu-reject-list');
     Route::get('admin/approve-list', [DashboardController::class, 'jnuApproveStudentList'])->name('jnu-approve-list');

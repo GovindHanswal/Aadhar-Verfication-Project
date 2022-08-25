@@ -178,6 +178,24 @@ class DashboardController extends Controller
         }
     }
 
+    public function jnuRemovestudents($id) {
+        $check = false;
+        if($id) {
+            $userData = RegisteredAadhaar::where('aadhaar_no', $id)->first();
+
+            if($userData) {
+                if($userData->college_id == 'C-140623') {
+                    dd("collage matched");
+                }
+                else {
+                    dd('college id not match');
+                }
+            }
+
+            
+        }
+    }
+
     /**
      * function to approve admission request for Jecrc
      */
