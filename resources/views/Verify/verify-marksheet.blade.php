@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login page</title>
+    <title>Verify Marksheet</title>
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -46,10 +46,10 @@
             </div>
             <div class="form-container">
                 <div class="signinform">
-                    <form action="{{route('verify-aadhaar')}}" method="POST" class="sign-in-form">
+                    <form action="{{route('jnu-marksheet-verify')}}" method="POST" class="sign-in-form">
                         @csrf
-                        <h2 class="title negative-margin">Aadhaar verification</h2>
-                        <h2 class="page_title mb-5">Please fill with your Aadhaar Details</h2>
+                        <h2 class="title negative-margin">Verify Marksheet</h2>
+                        <h2 class="page_title mb-5">Please fill with your Details</h2>
 
                         <!-- Alert message -->
                         @if(session('message'))
@@ -64,10 +64,21 @@
 
                         <div class="usernamew-100">
                             <div class="input-field">
-                            <input type="text" name="aadhaar_no" class="form-control" id="" placeholder="Enter aadhaar no.">
-                            @if($errors->has('aadhaar_no'))
+                            <input type="text" name="10th_roll" class="form-control" id="" placeholder="Enter 10th roll number">
+                            @if($errors->has('10th_roll'))
                             <li style="color: red">
-                                {{$errors->first('aadhaar_no')}}
+                                {{$errors->first('10th_roll')}}
+                            </li>
+                            @endif
+                            </div>
+                        </div>
+
+                        <div class="usernamew-100">
+                            <div class="input-field">
+                            <input type="text" name="12th_roll" class="form-control" id="" placeholder="Enter 12th roll number">
+                            @if($errors->has('12th_roll'))
+                            <li style="color: red">
+                                {{$errors->first('12th_roll')}}
                             </li>
                             @endif
                             </div>
@@ -75,7 +86,7 @@
 
                         <div class="action_btn">
                             <div class="sign_in_btn">
-                                <button class="submit-btn" type="submit">Sign in</button>
+                                <button class="submit-btn" type="submit">Verify</button>
                             </div>
                         </div>
                     </form>
@@ -84,13 +95,7 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>Don't have Aadhaar card ?</h3>
-                <div class="action_sign_up_btn mt-3">
-                    <div class="sign_up_btn">
-                        <a href="{{route('jnu-marksheet-verify-page')}}" role="">Click here
-                        </a>
-                    </div>
-                </div>
+                <h3>Verify Marksheet</h3>
             </div>
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>

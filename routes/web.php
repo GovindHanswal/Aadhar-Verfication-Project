@@ -11,6 +11,7 @@ use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredAadhaarController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MarksheetController;
 
 
 /*
@@ -99,6 +100,14 @@ Route::group([ 'prefix' => 'jecrc' , 'namespace' => 'Jecrc' ], function ($router
 
    
 });
+
+Route::get('admin/create-marksheet', [MarksheetController::class, 'createMarksheetData'])->name('admin.create-10th-data');
+Route::post('admin/create-marksheet/store', [MarksheetController::class, 'storeMarksheetData'])->name('admin.store-marksheet-data');
+
+Route::get('jnu/marksheet-verification', [MarksheetController::class, 'jnuMarksheetVerifyPage'])->name('jnu-marksheet-verify-page');
+Route::post('jnu/verify-marksheet-details', [MarksheetController::class, 'jnuMarkeetVerify'])->name('jnu-marksheet-verify');
+
+
 
 
 
