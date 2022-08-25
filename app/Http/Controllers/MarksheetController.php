@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\TenthData;
 use App\Models\TwelvethData;
+use App\Models\RegisteredAadhaar;
 
 class MarksheetController extends Controller
 {
@@ -62,40 +63,49 @@ class MarksheetController extends Controller
             '12th_roll' => 'required'
         ]);
 
-        $tenthData = TenthData::where('10th_roll', $request['10th_roll'])->first();
-        $twelvethData = TwelvethData::where('12th_roll' , $request['12th_roll'])->first();
+        $id = $request['10th_roll'] . $request['12th_roll'];
 
-        if($tenthData['name'] == $twelvethData['name']) {
-            $name_check = true;
-        }
+        $check_if_exits = RegisteredAadhaar::where('user_id', $id)->first();
 
-        if($tenthData['father_name'] == $twelvethData['father_name']) {
-            $father_name_check = true;
-        }
+        if(!$check_if_exits) {
+            $tenthData = TenthData::where('10th_roll', $request['10th_roll'])->first();
+            $twelvethData = TwelvethData::where('12th_roll' , $request['12th_roll'])->first();
+    
+            if($tenthData['name'] == $twelvethData['name']) {
+                $name_check = true;
+            }
+    
+            if($tenthData['father_name'] == $twelvethData['father_name']) {
+                $father_name_check = true;
+            }
+    
+            if($tenthData['mother_name'] == $twelvethData['mother_name']) {
+                $mother_name_check = true;
+            }
+    
+            if($tenthData['dob'] == $twelvethData['dob']) {
+                $dob_check = true;
+            }
+    
+            if($name_check && $father_name_check && $mother_name_check && $dob_check) {
+    
+                $userData = [
+                    'user_id' => $id,
+                ];
+                session()->forget('userData');
+                session()->put('userData', $userData);
 
-        if($tenthData['mother_name'] == $twelvethData['mother_name']) {
-            $mother_name_check = true;
-        }
-
-        if($tenthData['dob'] == $twelvethData['dob']) {
-            $dob_check = true;
-        }
-
-        if($name_check && $father_name_check && $mother_name_check && $dob_check) {
-
-            $id = $request['10th_roll'] . $request['12th_roll'];
-
-            $userData = [
-                'user_id' => $id,
-            ];
-            session()->forget('userData');
-            session()->put('userData', $userData);
-
-            return redirect()->route('register-createPage')->with(['message' => 'Successfully verified', 'success' => true]);
+                return redirect()->route('register-createPage')->with(['message' => 'Successfully verified', 'success' => true]);
+            }
+            else {
+                return redirect()->back()->with(['error' => 'Authentication failed', 'success' => false]);
+            }
         }
         else {
-            return redirect()->back()->with(['error' => 'Authentication failed', 'success' => false]);
+            return redirect()->back()->with(['error' => 'User already exists', 'success' => false]);
         }
+
+
 
         
     }

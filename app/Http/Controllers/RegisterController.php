@@ -101,6 +101,15 @@ class RegisterController extends Controller
 
         if($store) {
 
+            $registeredData = [
+                'aadhaar_no' => "",
+                'user_id' => $request['user_id'],
+                'college_id' => "",
+                'status' => 1
+            ];
+
+            RegisteredAadhaar::updateOrCreate(['user_id' => $request['user_id']], $registeredData);
+
             // $registedData = [
             //     'aadhaar_no' => $request['aadhaar_no'],
             //     'college_id' => $data['college_id']

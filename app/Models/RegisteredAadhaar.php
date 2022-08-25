@@ -11,5 +11,5 @@ class RegisteredAadhaar extends Model
     
     protected $table = 'registered_aadhaar';
 
-    protected $fillable = ['aadhaar_no', 'college_id'];
+    protected $fillable = ['aadhaar_no', 'college_id', 'user_id', 'status'];
 }

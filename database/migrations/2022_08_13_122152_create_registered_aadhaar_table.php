@@ -16,7 +16,9 @@ class CreateRegisteredAadhaarTable extends Migration
         Schema::create('registered_aadhaar', function (Blueprint $table) {
             $table->id();
             $table->string('aadhaar_no');
+            $table->string('user_id');
             $table->string('college_id');
+            $table->string('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
