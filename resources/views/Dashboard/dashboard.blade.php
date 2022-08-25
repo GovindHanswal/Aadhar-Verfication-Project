@@ -38,21 +38,21 @@
                 <input type="text" placeholder="Search">
                 <span class="tooltip">Search</span>
             </li> --}}
-            <li>
+            <li class="aps">
                 <a href="{{route('jnu-dashboard')}}" class="active-tab">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Applied Students</span>
                 </a>
                 <span class="tooltip">Applied Students</span>
             </li>
-            <li>
+            <li class="ws">
                 <a href="{{route('jnu-reject-list')}}">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Waiting Students</span>
                 </a>
                 <span class="tooltip">Waiting Students</span>
             </li>
-            <li>
+            <li class="as">
                 <a href="{{route('jnu-approve-list')}}">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Approve Students</span>

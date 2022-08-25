@@ -8,10 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body class="form-wrapper">
-    <h3 class="mb-2">Login credentials</h3>
+    <!-- <h3 class="mb-2">Login credentials</h3> -->
 
     <!-- Alert message -->
-    @if(session('message'))
+    <!-- @if(session('message'))
     <div class="alert alert-success text-center">{{session('message')}}</div>
     @elseif(session('error'))
     <div class="alert alert-danger text-center">{{session('error')}}</div>
@@ -19,12 +19,14 @@
 
     @if($errors->any())
     <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
-    @endif
+    @endif -->
     
     <div class="form-container mt-4">
-        <h3>Your request is successfully submmited.</h3>
+        <h3>Your request is successfully submitted.</h3>
         {{-- <p>Your username is <b>{{Session::get('credentials')['username']}}</b> and password <b>{{Session::get('credentials')['password']}}</b></p> --}}
+        <div class="btn">
         <a class="btn btn-primary" href="{{route('college-list')}}">Home page</a>
+        </div>
     </div>
 </body>
 </html>

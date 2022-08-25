@@ -143,13 +143,34 @@ body {
 }
 
 .sidebar ul li a {
-    color: black;
+    color: #333;
     display: flex;
     align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
     border-radius: 12px;
     white-space: nowrap;
+    background: #e2ded9;
+}
+/* .sidebar ul .aps,.sidebar ul .ws,.sidebar ul .as{
+    background: rgb(63, 46, 59) ;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+    color: #fff;
+} */
+.active, .sidebar ul .aps:hover{
+    background-color: #666;
+    color: white;
+}
+
+.sidebar ul li a:active{
+    color: #fff;
+    background: rgb(63, 46, 59);
+
 }
 
 .sidebar ul li a:hover {
@@ -173,7 +194,7 @@ body {
 .sidebar.active .links_name {
     opacity: 1;
     pointer-events: auto;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
 }
 
 .sidebar .profile_content {
