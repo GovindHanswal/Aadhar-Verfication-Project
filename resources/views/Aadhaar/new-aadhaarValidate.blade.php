@@ -84,14 +84,14 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>Already Registered ?</h3>
+                <!-- <h3>Already Registered ?</h3> -->
                 <!-- <p>Verify yourself</p> -->
-                <div class="action_sign_up_btn">
+                <!-- <div class="action_sign_up_btn">
                     <div class="sign_up_btn">
                         <a href="{{route('login')}}" role="">Sign in
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <img src="{{asset('assets/container-pic-2.png')}}" alt="">
         </div>
