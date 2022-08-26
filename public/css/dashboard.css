@@ -454,3 +454,53 @@ left: 240px;
     text-decoration: none;
     border-radius: 5px;
 }
+
+
+
+
+/* ................................Stdent dashboard.................. */
+
+.table-container h1{
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    color: #453e79;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    border: 1px solid #dad8e4;
+    padding: 5px 15px;
+    margin-bottom: 100px;
+}
+
+.table-container .student_container{
+    /* position: relative; */
+    width: 100%;
+    /* left: 10%;    */
+    
+}
+
+.table-container .student_container .row{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    border-bottom: 0.5px solid #666;
+    border-bottom: none;
+    line-height: 2;
+    padding-bottom: 25px;
+}
+
+
+.table-container .student_container .row .col1{
+    display: flex;
+    justify-content: center;
+    border-bottom: 0.5px solid #666;
+
+}
+
+
+.table-container .student_container .row .col2{
+    display: flex;
+    justify-content: center;
+    border-bottom: 0.5px solid #666;
+
+}

@@ -33,34 +33,34 @@
             </div>
         </div>
         <ul class="nav_list">
-            {{-- <li>
+             <!-- <li>
                 <i class='bx bx-search'></i>
                 <input type="text" placeholder="Search">
                 <span class="tooltip">Search</span>
-            </li> --}}
-            {{-- <li class="aps">
-                <a href="{{route('jnu-dashboard')}}" class="active-tab">
+            </li>  -->
+             <li class="aps">
+                <a href="#" class="active-tab">
                     <!-- <i class='bx bx-grid-alt active'></i> -->
                     <i class='bx bx-male active'></i>
                     
-                    <span class="links_name active">Applied Students</span>
+                    <span class="links_name active">Student Detail's</span>
                 </a>
-                <span class="tooltip">Applied Students</span>
+                <span class="tooltip">Student Detail's</span>
             </li>
             <li class="ws">
-                <a href="{{route('jnu-reject-list')}}">
+                <a href="#">
                 <i class='bx bx-time-five'></i>
-                    <span class="links_name">Waiting Students</span>
+                    <span class="links_name">Online Exam</span>
                 </a>
-                <span class="tooltip active">Waiting Students</span>
+                <span class="tooltip active">Online Exam</span>
             </li>
             <li class="as">
-                <a href="{{route('jnu-approve-list')}}">
+                <a href="#">
                     <i class='bx bxs-check-square'></i>
-                    <span class="links_name">Approve Students</span>
+                    <span class="links_name">Live Classes</span>
                 </a>
-                <span class="tooltip active">Approve Students</span>
-            </li> --}}
+                <span class="tooltip active">Live Classes</span>
+            </li>
             <li>
                 <a href="{{route('logout')}}">
                     <i class='bx bx-log-out'></i>
@@ -138,7 +138,44 @@
     </div>
 -->
     <div class="table-container">
-        <h1>Student successfully authenticate</h1>
+        <h1>Welcome To Student Dashboard !!</h1>
+
+        <div class="student_container">
+
+                <div class="row">
+                    <div class="col1">
+                        <p><b>Name</b></p>
+                    </div>
+                    <div class="col2">
+                        <p> Govind Hanswal</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <p><b>Date of Birth</b></p>
+                    </div>
+                    <div class="col2">
+                        <p> 22/08/2000</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <p><b>Course</b></p>
+                    </div>
+                    <div class="col2">
+                        <p>MCA Cyber Security</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <p><b>College</b></p>
+                    </div>
+                    <div class="col2">
+                        <p>Jaipur National University</p>
+                    </div>
+                </div>
+                
+        </div>
     </div>
 
     <script> 
