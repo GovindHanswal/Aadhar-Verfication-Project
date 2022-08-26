@@ -24,7 +24,7 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_detail">
-                    <img src="12345.jpg" alt="">
+                    <!-- <img src="12345.jpg" alt=""> -->
                     <div class="name_job">
                         <div class="name">Govind Hanswal</div>
                         <div class="job">WEb Devlopement</div>
@@ -40,24 +40,26 @@
             </li> --}}
             <li class="aps">
                 <a href="{{route('jnu-dashboard')}}" class="active-tab">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Applied Students</span>
+                    <!-- <i class='bx bx-grid-alt active'></i> -->
+                    <i class='bx bx-male active'></i>
+                    
+                    <span class="links_name active">Applied Students</span>
                 </a>
                 <span class="tooltip">Applied Students</span>
             </li>
             <li class="ws">
                 <a href="{{route('jnu-reject-list')}}">
-                    <i class='bx bx-grid-alt'></i>
+                <i class='bx bx-time-five'></i>
                     <span class="links_name">Waiting Students</span>
                 </a>
-                <span class="tooltip">Waiting Students</span>
+                <span class="tooltip active">Waiting Students</span>
             </li>
             <li class="as">
                 <a href="{{route('jnu-approve-list')}}">
-                    <i class='bx bx-grid-alt'></i>
+                    <i class='bx bxs-check-square'></i>
                     <span class="links_name">Approve Students</span>
                 </a>
-                <span class="tooltip">Approve Students</span>
+                <span class="tooltip active">Approve Students</span>
             </li>
             <li>
                 <a href="{{route('logout')}}">
@@ -184,17 +186,29 @@
         </table>
     </div>
 
-    <script>
+    <script> 
         let btn = document.querySelector('#btn');
         let sidebar = document.querySelector(".sidebar");
         let searchBtn = document.querySelector(".bx-search");
-        btn.onclick = function() {
+        let aps=document.querySelector(".links_name");
+        let bx=document.querySelector(".bx");
+
+      
+        btn.onclick = function() { 
             sidebar.classList.toggle("active");
         }
         searchBtn.onclick = function() {
             sidebar.classList.toggle("active");
         }
+        aps.onclick = function(){
+            links_name.classList.toggle("active");
+        }
+        bx.onclick = function(){
+            bx.classList.toggle("active");
+        }
+      
+
     </script>
 </body>
 
-</html>
+</html> 

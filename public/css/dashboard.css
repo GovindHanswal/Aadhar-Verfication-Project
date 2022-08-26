@@ -18,7 +18,7 @@ body {
     top: 0;
     left: -8px;
     height: 100%;
-    width: 60px;
+    width: 50px;
     background: #e2ded9;
     padding: 1px 9px;
     transition: all 0.5s ease;
@@ -84,6 +84,14 @@ body {
     list-style: none;
     line-height: 50px;
 }
+/* ...........................///////////////..................... */
+
+.nav_list{
+    padding-left: 0;
+}
+
+
+
 
 .sidebar ul li .tooltip {
     position: absolute;
@@ -109,7 +117,7 @@ body {
 }
 
 .sidebar ul li:hover .tooltip {
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
     opacity: 1;
     top: 50%;
 }
@@ -147,48 +155,85 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: all 0.4s ease;
+    /* transition: all 0.4s ease; */
     border-radius: 12px;
     white-space: nowrap;
     background: #e2ded9;
 }
-/* .sidebar ul .aps,.sidebar ul .ws,.sidebar ul .as{
-    background: rgb(63, 46, 59) ;
+/* 
+.sidebar ul .aps a{
+    color: #333;
     display: flex;
     align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
     border-radius: 12px;
     white-space: nowrap;
-    color: #fff;
+    background: #e2ded9;
 } */
-.active, .sidebar ul .aps:hover{
-    background-color: #666;
-    color: white;
+/* .sidebar ul .active{
+    background: rgb(63, 46, 59);
+   color: #fff;
+    width: 100%;
+} */
+/* ......................./////////.........................0 */
+
+.links_name.active{
+    /* background: rgb(63, 46, 59); */
+    background: #fff;
+    color: #666;
+    border-radius: 0px 12px 12px 0px;
+    width: 100%;
+}
+.bx.active{
+    /* background: rgb(63, 46, 59); */
+    color: #666;
+    background: #fff;
+    border-radius: 12px 0px 0px 12px;
+    
+}
+.nav_list .ws{
+    border-radius: 12px 0px 0px 12px;
+
 }
 
-.sidebar ul li a:active{
-    color: #fff;
-    background: rgb(63, 46, 59);
 
+
+
+
+
+/* ........................................................... */
+
+.sidebar ul .as span:hover,.sidebar ul .ws span:hover {
+    color: #666;
+    /* background: rgb(63, 46, 59); */
+    background: #fff;
 }
+.sidebar .as :hover,.sidebar .ws :hover{
+    /* background: rgb(63, 46, 59); */
+    background: #fff;
 
-.sidebar ul li a:hover {
-    color: #fff;
-    background: rgb(63, 46, 59);
+    color: #666;
+    border-radius: 12px 12px 12px 12px;
+    width: 100%;
 }
 
 .sidebar ul li i {
     height: 50px;
-    min-width: 40px;
+    min-width: 45px;
     border-radius: 12px;
     line-height: 50px;
     text-align: center;
-}
+    border-radius: 12px 0px 0px 0px;
+   }
+   /* .sidebar.active ul li i{
+        margin-left: 10px;
+   } */
 
 .sidebar .links_name {
     opacity: 0;
     pointer-events: none;
+    padding-right: 10px;
 }
 
 .sidebar.active .links_name {
@@ -209,7 +254,7 @@ body {
     position: relative;
     padding: 1px 4px;
     height: 60px;
-    transition: all 0.4s ease;
+    /* transition: all 0.4s ease; */
 }
 
 .sidebar.active .profile_content .profile {
@@ -228,7 +273,7 @@ body {
     pointer-events: auto;
 }
 
-.profile .profile_detail img {
+/* .profile .profile_detail img {
     display: inline-block;
     align-items: center;
     height: 40px;
@@ -237,7 +282,7 @@ body {
     margin-left: 7px;
     object-fit: cover;
     border-radius: 120px;
-}
+} */
 
 .profile .profile_detail .name {
     display: inline-block;
