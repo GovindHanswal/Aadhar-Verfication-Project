@@ -54,8 +54,8 @@
             </li>
             <li>
                 <a href="{{route('jnu-approve-list')}}">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Approve Students</span>
+                    <i class='bx bx-grid-alt active'></i>
+                    <span class="links_name active">Approve Students</span>
                 </a>
                 <span class="tooltip">Approve Students</span>
             </li>

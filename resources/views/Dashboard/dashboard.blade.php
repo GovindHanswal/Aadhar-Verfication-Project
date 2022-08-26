@@ -154,7 +154,8 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">Student Name</th>
-                    <th class="text-center">Aadhaar Number/unique id</th>
+                    <th class="text-center">Aadhaar Number</th>
+                    <th class="text-center">Unique Id</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Course Name</th>
                     <th class="text-center">Action</th>
@@ -169,8 +170,13 @@
                         <td>{{$list['full_name']}}</td>
                         @if($list['aadhaar_no'])
                             <td>{{$list['aadhaar_no']}}</td>
-                        @elseif($list['user_id'])
+                        @else
+                            <td>--</td>
+                        @endif
+                        @if($list['user_id'])
                             <td>{{$list['user_id']}}</td>
+                        @else
+                            <td>--</td>
                         @endif
                         <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>

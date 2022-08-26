@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Hash;
 use Mail;
 use App\Models\JnuStudents;
 use App\Models\JecrcStudents;
+use App\Models\Students;
 use App\Models\RegisteredAadhaar;
 
 class DashboardController extends Controller
@@ -107,53 +109,64 @@ class DashboardController extends Controller
      */
     public function jnuApproveStudents($id) {
         $userCheck = false;
+        $user = '';
         
         if($id) {
-
-            $duplicacyCheck = RegisteredAadhaar::where('aadhaar_no', $id)->first();
             
-            if(!$duplicacyCheck) {
-                $userCheck = true;
+            $checkAadhaar = RegisteredAadhaar::where('aadhaar_no', $id)->first();
+            if($checkAadhaar) {
+                $user = $checkAadhaar;
+            }
+            else {
+                $checkUserID = RegisteredAadhaar::where('user_id', $id)->first();
+                $user = $checkUserID;
             }
 
-            if($userCheck) {
-                $user = JnuStudents::where('aadhaar_no', $id)->first();
+            if($user->status == '2') {
+                return redirect()->back()->with(['error' => 'This student is already registered in another university', 'success' => false]);
+            }
+            else {
+
+
+                $studentData = JnuStudents::where('aadhaar_no', $id)->first();
+
+                if($studentData == null) {
+                    $studentData = JnuStudents::where('user_id', $id)->first();
+                }
+                $studentData->update(['status' => "2"]);
+
+                $user->update(['college_id' => $studentData['college_id']]);
                 $user->update(['status' => "2"]);
+    
+                $random = rand(10000, 99999);
+                $username = "U" . $random;
+                $password = Hash::make($username);
 
-                // $random = rand(10000, 99999);
-                // $username = "U" . $random;
-                // $password = Hash::make($username);
+                $data = [
+                    'username' => $username,
+                    'password' => $password
+                ];
 
-                // $data['username'] = $username;
-                // $data['password'] = $password;
+                students::create($data);
 
-                // dd($user->full_name);
-
-                $data = ['data' => 'Your admission request is Approved '];
-                $user['email'] = $user->email;
-                $user['name']= $user->full_name;
-
+                $data = ['data' => 'Your admission request is Approved ', 'username' => $username, 'password' => $password];
+                $user['email'] = $studentData->email;
+                $user['name']= $studentData->full_name;
+                $user['username'] = $username;
+                $user['password'] = $username;
+    
                 Mail::send('Mail.mail', $data, function($messages) use($user) {
                     $messages->to($user['email']);
                     $messages->subject('Hello ' . $user['name']);
                 });
 
-                $data = [
-                    'aadhaar_no' => $id,
-                    'college_id' => $user['college_id']
-                ];
-
-                RegisteredAadhaar::insert($data);
-            }
-            else {
-                return redirect()->back()->with(['error' => 'This student is already registered in another university', 'success' => false]);
-            }
-
-            if($user) {
-                return redirect()->back()->with(['message' => 'Successfully approved', 'success' => true]);
-            }
-            else {
-                return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
+                if($user) {
+                    return redirect()->back()->with(['message' => 'Successfully approved', 'success' => true]);
+                }
+                else {
+                    return redirect()->back()->with(['error' => 'some error occur', 'success' => false]);
+                }
+                
             }
         }
     }
