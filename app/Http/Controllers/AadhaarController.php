@@ -120,6 +120,11 @@ class AadhaarController extends Controller
                     ];
                     session()->forget('userData');
                     session()->put('userData', $userData);
+
+                    $marksheetData = [];
+    
+                    session()->forget('marksheetData');
+                    session()->put('marksheetData', $marksheetData);
     
                     return redirect()->route('verify-mobile');
                 }

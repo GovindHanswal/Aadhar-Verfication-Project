@@ -13,6 +13,16 @@
 <body>
     <div class="main-wrapper">
         <div class="left-container">
+             <!-- Alert message -->
+             @if(session('message'))
+                <div class="alert alert-success text-center">{{session('message')}}</div>
+                @elseif(session('error'))
+                <div class="alert alert-danger text-center">{{session('error')}}</div>
+                @endif
+    
+                @if($errors->any())
+                <p class="alert alert-danger">{{ implode('', $errors->all(':message')) }}</p>
+                @endif
             <div class="progress-bar">
                 <div class="step">
                     <p>
@@ -165,6 +175,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                    <div class="input-field">
+                                        <input type="text" name="10th_roll"  placeholder="Enter your 10th roll number" value="{{isset(Session::get('marksheetData')['10th_roll']) ? Session::get('marksheetData')['10th_roll'] : ''}}">
+                                        @if($errors->has('10th_roll'))
+                                        <li style="color: red">
+                                            {{$errors->first('10th_roll')}}
+                                        </li>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="usernamew-100">
+                                    <div class="input-field">
+                                        <input type="text" name="12th_roll"  placeholder="Enter your 12th roll number" value="{{isset(Session::get('marksheetData')['12th_roll']) ? Session::get('marksheetData')['12th_roll'] : ''}}">
+                                        @if($errors->has('12th_roll'))
+                                        <li style="color: red">
+                                            {{$errors->first('12th_roll')}}
+                                        </li>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row mt-4">
                             <div class="col-2">
@@ -185,6 +221,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         {{-- <input type="hidden" name="college_name" value="{{Session::get('collegeData')['college_name']}}">
                         <input type="hidden" name="college_id" value="{{Session::get('collegeData')['college_id']}}"> --}}

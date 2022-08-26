@@ -31,7 +31,7 @@ class RegisterController extends Controller
      * function to register jnu students
      */
     public function register(Request $request) {
-        
+
         $this->validate($request, [
             'full_name' => 'required',
             'dob' => 'required',
@@ -47,88 +47,100 @@ class RegisterController extends Controller
             'profile_image' => 'required'
         ]);
 
-        $profile = $request['profile_image'];
-        $profile_path = Storage::putFile('profile', $profile);
+        $unique_id = $request['10th_roll'] . $request['12th_roll'];
 
-        $marksheet_10 = $request['10_marksheet'];
-        $marksheet_10_path = Storage::putFile('marksheet/tenth', $marksheet_10);
+        $userCheck = RegisteredAadhaar::where('user_id', $unique_id)->first();
 
-        $marksheet_12 = $request['12_marksheet'];
-        $marksheet_12_path = Storage::putFile('marksheet/twelth', $marksheet_12);
+        if($userCheck == null) {
 
-        $data = [
-            'full_name' => $request['full_name'],
-            'dob' => $request['dob'],
-            'father_name' => $request['father_name'],
-            'mobile_no' => $request['mobile_no'],
-            'email' => $request['email'],
-            'course' => $request['course'],
-            'gender' => $request['gender'],
-            'role' => 2,
-            // 'aadhaar_no' => $request['aadhaar_no'],
-            '10_marksheet' => $marksheet_10_path,
-            '12_marksheet' => $marksheet_12_path,
-            'profile_image' => $profile_path,
-            'college_id' => "C-140623",
-            'status' => 1,
-        ];
-
-        if($request['aadhaar_no']) {
-            $data['aadhaar_no'] = $request['aadhaar_no'];
-            $data['user_id'] = "";
-        }
-        
-        if($request['user_id']) {
-            $data['aadhaar_no'] = "";
-            $data['user_id'] = $request['user_id'];
-        }
-
-        // $random = rand(10000, 99999);
-
-        // $username = "U" . $random;
-        // $password = Hash::make($username);
-
-        // $data['username'] = $username;
-        // $data['password'] = $password;
-
-        if($request['aadhaar_no']) {
-            $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
-        }
-
-        if($request['user_id']) {
-            $store = JnuStudents::updateOrCreate(['user_id' => $request['user_id']], $data);
-        }
-
-        if($store) {
-
-            $registeredData = [
-                'aadhaar_no' => $request['aadhaar_no'] ? $request['aadhaar_no'] : "",
-                'user_id' =>  $request['user_id'] ? $request['user_id'] : "",
-                'college_id' => "",
-                'status' => 1
+            $profile = $request['profile_image'];
+            $profile_path = Storage::putFile('profile', $profile);
+    
+            $marksheet_10 = $request['10_marksheet'];
+            $marksheet_10_path = Storage::putFile('marksheet/tenth', $marksheet_10);
+    
+            $marksheet_12 = $request['12_marksheet'];
+            $marksheet_12_path = Storage::putFile('marksheet/twelth', $marksheet_12);
+    
+            $data = [
+                'full_name' => $request['full_name'],
+                'dob' => $request['dob'],
+                'father_name' => $request['father_name'],
+                'mobile_no' => $request['mobile_no'],
+                'email' => $request['email'],
+                'course' => $request['course'],
+                'gender' => $request['gender'],
+                'role' => 2,
+                // 'aadhaar_no' => $request['aadhaar_no'],
+                '10_marksheet' => $marksheet_10_path,
+                '12_marksheet' => $marksheet_12_path,
+                'profile_image' => $profile_path,
+                'college_id' => "C-140623",
+                'status' => 1,
             ];
-
-            RegisteredAadhaar::updateOrCreate(['user_id' => $request['user_id']], $registeredData);
-
-            // $registedData = [
-            //     'aadhaar_no' => $request['aadhaar_no'],
-            //     'college_id' => $data['college_id']
-            // ];
-
-            // RegisteredAadhaar::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $registedData);
-
-            // $data = [
-            //     'username' => $username,
-            //     'password' => $username
-            // ];
-            // session()->forget('credentials');
-            // session()->put('credentials', $data);
-
-            return redirect()->route('credential-page')->with(['message' => 'Your request seccessfully submitted', 'success' => true]);
+    
+            if($request['aadhaar_no']) {
+                $data['aadhaar_no'] = $request['aadhaar_no'];
+                $data['user_id'] = "";
+            }
+            
+            if($request['user_id']) {
+                $data['aadhaar_no'] = "";
+                $data['user_id'] = $request['user_id'];
+            }
+    
+            // $random = rand(10000, 99999);
+    
+            // $username = "U" . $random;
+            // $password = Hash::make($username);
+    
+            // $data['username'] = $username;
+            // $data['password'] = $password;
+    
+            if($request['aadhaar_no']) {
+                $store = JnuStudents::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $data);
+            }
+    
+            if($request['user_id']) {
+                $store = JnuStudents::updateOrCreate(['user_id' => $request['user_id']], $data);
+            }
+    
+            if($store) {
+    
+                $registeredData = [
+                    'aadhaar_no' => $request['aadhaar_no'] ? $request['aadhaar_no'] : "",
+                    'user_id' =>  $request['user_id'] ? $request['user_id'] : "",
+                    'college_id' => "",
+                    'status' => 1
+                ];
+    
+                RegisteredAadhaar::updateOrCreate(['user_id' => $request['user_id']], $registeredData);
+    
+                // $registedData = [
+                //     'aadhaar_no' => $request['aadhaar_no'],
+                //     'college_id' => $data['college_id']
+                // ];
+    
+                // RegisteredAadhaar::updateOrCreate(['aadhaar_no' => $request['aadhaar_no']], $registedData);
+    
+                // $data = [
+                //     'username' => $username,
+                //     'password' => $username
+                // ];
+                // session()->forget('credentials');
+                // session()->put('credentials', $data);
+    
+                return redirect()->route('credential-page')->with(['message' => 'Your request seccessfully submitted', 'success' => true]);
+            }
+            else {
+                return redirect()->back()->with(['error' => 'Some error occur', 'success' => false]);
+            }
         }
         else {
-            return redirect()->back()->with(['error' => 'Some error occur', 'success' => false]);
+            return redirect()->back()->with(['error' => 'Already Registered', 'success' => false]);
         }
+        
+
     }
 
 

@@ -95,6 +95,14 @@ class MarksheetController extends Controller
                 session()->forget('userData');
                 session()->put('userData', $userData);
 
+                $marksheetData = [
+                    '10th_roll' => $request['10th_roll'],
+                    '12th_roll' => $request['12th_roll']
+                ];
+
+                session()->forget('marksheetData');
+                session()->put('marksheetData', $marksheetData);
+
                 return redirect()->route('register-createPage')->with(['message' => 'Successfully verified', 'success' => true]);
             }
             else {
