@@ -30,8 +30,13 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>College List</h3>
-                <h4>Select the college of your choice...</h4>
+                <h3>Already a member ?</h3>
+                <div class="action_sign_up_btn mt-3">
+                    <div class="sign_up_btn">
+                        <a href="{{route('login')}}" role="">Login
+                        </a>
+                    </div>
+                </div>
             </div>
             <img src="{{asset('assets/college_list_pic_login.png')}}" alt="">
         </div>

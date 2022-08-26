@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Students;
 
 class LoginController extends Controller
 {
@@ -23,32 +24,65 @@ class LoginController extends Controller
     public function authenticate(Request $request) {
 
         $this->validate($request, [
+            'login_role' => 'required',
             'email' => 'required',
             'password' => 'required|string'
         ]);
 
         $credentials = $request->only('email', 'password');
 
+        if ($request['login_role'] == '1') {
+            \Config::set('auth.providers.users.model', User::class);
 
-        if(! $token = auth()->attempt($credentials)) {
-            
-            return redirect()->back()->with('error', 'Credentials did not match');
-        }
+            if(! $token = auth()->attempt($credentials)) {
+                
+                return redirect()->back()->with('error', 'Credentials did not match');
+            }
+            else {
+                $user = auth()->user();
+    
+                $session = [
+                    'token' => $token,
+                    'user_id' => $user['id'],
+                    'name' => $user['name'],
+                    'role_id' => $user['role'],
+                    'name' => $user['email'],
+                ];
+        
+                session()->put('data', $session);
+        
+                return redirect()->route('jnu-dashboard');
+            }
+        } 
         else {
-            $user = auth()->user();
 
-            $session = [
-                'token' => $token,
-                'user_id' => $user['id'],
-                'name' => $user['name'],
-                'role_id' => $user['role'],
-                'name' => $user['email'],
+            $credentials = [
+                'username' => $request['email'],
+                'password' => $request['password']
             ];
-    
-            session()->put('data', $session);
-    
-            return redirect()->route('jnu-dashboard');
+
+            \Config::set('auth.providers.users.model', Students::class);
+
+            if(! $token = auth()->attempt($credentials)) {
+                
+                return redirect()->back()->with('error', 'Credentials did not match');
+            }
+            else {
+                $user = auth()->user();
+
+                $session = [
+                    'token' => $token,
+                    'username' => $user['username'],
+                ];
+        
+                session()->put('studentLoginData', $session);
+        
+                return redirect()->route('student-dashboard');
+            }
         }
+
+      
+
     }
 
     /**

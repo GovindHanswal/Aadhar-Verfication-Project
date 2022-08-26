@@ -285,4 +285,8 @@ class DashboardController extends Controller
         }
         return redirect()->route('jecrc.login');
     }
+
+    public function studentDashboard() {
+        return view('Students.dashboard');
+    }
 }

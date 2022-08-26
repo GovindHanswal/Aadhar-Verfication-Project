@@ -26,17 +26,17 @@ class OtpController extends Controller
         $basic  = new \Vonage\Client\Credentials\Basic(env("VONAGE_API_KEY"),env("VONAGE_SECRET_KEY"));
         $client = new \Vonage\Client($basic);
 
-        // $response = $client->sms()->send(
-        //     new \Vonage\SMS\Message\SMS("91$mobile_no", BRAND_NAME, "Your authentication code is $otp  ")
-        // );
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("91$mobile_no", BRAND_NAME, "Your authentication code is $otp  ")
+        );
         
-        // $message = $response->current();
+        $message = $response->current();
         
-        // if ($message->getStatus() == 0) {
-        //     return  true;
-        // } else {
-        //     return false;
-        // }
+        if ($message->getStatus() == 0) {
+            return  true;
+        } else {
+            return false;
+        }
 
         return true;
     }

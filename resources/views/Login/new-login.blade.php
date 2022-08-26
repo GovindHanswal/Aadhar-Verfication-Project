@@ -31,7 +31,15 @@
                         <h2 class="title">Sign In</h2>
                         <h2 class="page_title">Please fill with details</h2>
 
-                          
+                        <div class="usernamew-100">
+                            <div class="input-field">
+                                <select class="form-select select-input" name="login_role" aria-label="Default select example">
+                                <option selected disabled>Select role</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Student</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="usernamew-100">
                             <div class="input-field">
@@ -56,7 +64,7 @@
         </div>
         <div class="right-container">
             <div class="content">
-                <h3>Admin Login</h3>
+                <h3>Login</h3>
                 <!-- <p>Register now</p> -->
                 <!-- <div class="action_sign_up_btn">
                     <div class="sign_up_btn">

@@ -107,6 +107,8 @@ Route::post('admin/create-marksheet/store', [MarksheetController::class, 'storeM
 Route::get('jnu/marksheet-verification', [MarksheetController::class, 'jnuMarksheetVerifyPage'])->name('jnu-marksheet-verify-page');
 Route::post('jnu/verify-marksheet-details', [MarksheetController::class, 'jnuMarkeetVerify'])->name('jnu-marksheet-verify');
 
+Route::get('student/dashboard', [DashboardController::class, 'studentDashboard'])->name('student-dashboard');
+
 
 
 

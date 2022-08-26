@@ -104,7 +104,7 @@
                         <td>{{$list['email']}}</td>
                         <td>{{$list['course']}}</td>
                         <td>
-                            <a class="btn btn-danger btn-sm" href="{{route('jnu-remove-students', [$list['aadhaar_no']])}}">Remove</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('jnu-remove-students', [$list['aadhaar_no']])}}">Transfer</a>
                         </td>
                     </tr>
                 @php $i++ @endphp
